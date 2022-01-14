@@ -1,0 +1,244 @@
+:root{
+	--body-background-color: #ffffff;
+	--font-color: #4e4e4e;
+	--border-gray-color : #dadada;
+	--naver-green-color: #04c75a;
+	--naver-green-border-color: #06b350;
+}
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	background:var(--body-background-color);
+}
+body button{
+    cursor: pointer;
+}
+
+.main-container{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 21px;
+}
+.main-container .main-wrap{
+	width:530px;
+
+}
+.main-container .main-wrap .sel-lang-wrap .lang-select
+{
+	width: 96px;
+	height: 30px;
+	color: var(--font-color);
+	border: solid 1px var(--border-gray-color);
+}
+
+.main-container .main-wrap .logo-wrap{
+	padding-top:55px;
+}
+.main-container .main-wrap .logo-wrap img
+{
+	width: 125px;
+	height: 24px;
+}
+
+.main-container .main-wrap header .sel-lang-wrap{
+	display:flex;
+	justify-content:flex-end;
+}
+
+.main-container .main-wrap header .logo-wrap{
+	display:flex;	
+	flex-direction: column;
+	align-items: center;
+}
+.login-input-section-wrap{
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: end;
+    color: #e6e8e9;
+}
+.Keyboard{
+    margin-right: 120px;
+    padding-right: 30px;
+    width: 580px;
+    text-align: right;
+    font-size: 13px;
+    padding-bottom:20px;
+    
+}
+.Keyboard button{
+    border: 0px;
+    background-color: #ffffff;
+    color:#9ba1a3;
+}
+.Keyboard i{
+    margin-left: 5px;
+}
+
+.login-input-wrap{
+display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    width: 465px;
+    height: 48px;
+    border: solid 1px var( --border-gray-color );
+    border-radius: 5px;
+    background: white;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.password-wrap{
+	margin-top: 13px; 
+}
+.login-input-wrap input{
+	border: none;
+	width:430px;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 5px;
+    margin-right: 10px;
+	height:30px;
+    
+}
+.login-button-wrap {
+	padding-top: 13px;
+}
+.login-button-wrap button{
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--naver-green-color);
+	color: white;
+	border: solid 1px var(--naver-green-border-color);
+    border-radius: 5px;
+}
+.login-stay-sign-in{
+	width: 465px;
+	height: 52px;
+	display: flex;
+	font-size: 14px;
+	color: #9ba1a3;
+	align-items: center;
+	justify-content: flex-start;
+}
+.login-stay-sign-in i{
+    margin-right: 3px;
+	font-size: 25px;
+	color: #9ba1a3;
+}
+.fab fa-instagram{
+    color: #dadada;
+}
+.login-stay-sign-in span{
+    font-size: 10px;
+	padding-left: 5px;
+	line-height: 25px;
+}
+
+.Easy-sgin-in-wrap{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+}
+.Easy-sgin-in-wrap h2{
+	font-size: 20px;
+}
+.Easy-sgin-in-wrap .sign-button-list
+{
+	padding-top:15px;
+	list-style: none;
+	width: 465px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Easy-sgin-in-wrap .sign-button-list li{
+	padding-bottom: 10px;
+}
+.Easy-sgin-in-wrap .sign-button-list li button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 300px;
+	height: 56px;
+	border: solid 1px var(--border-gray-color);
+    border-radius: 5px;
+	background: white;
+
+}
+.Easy-sgin-in-wrap .sign-button-list li button i{
+    width: 5px;
+	font-size: 15px;
+}
+
+.Easy-sgin-in-wrap .sign-button-list li button span{
+	padding-left: 20px;
+	font-size: 18px;
+}
+.forget-box{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 3px;
+    width: 300px;
+    height: 20px;
+    
+}
+
+.forget-box a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+    text-decoration-line: none;
+}
+.forget-box a:nth-last-child(2){
+    padding-left: 15px;
+    border-left: 1px solid #d5dfe2;
+    border-right: 1px solid #cdd6da;
+}
+.forget-msg{
+    color: #9ba1a3;
+    font-size: 13px;
+}
+footer{
+	padding-top: 20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width:100%;
+
+}
+.copyright-wrap img{
+    width: 465px;
+}
+.footer-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.footer-logo a{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    text-decoration-line: none;
+    color: #9ba1a3;
+    font-size: 13px;
+}
+.footer-logo span:nth-child(1){
+    padding-left: 10px;
+    border-left: 1px solid #c2cbce;
+}
+
