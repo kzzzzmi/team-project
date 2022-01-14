@@ -3,6 +3,8 @@ package com.springboot.placenote.domain.user;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public class UserRepository {
-
+public interface UserRepository {
+	
+	public User getUserByUsername(String username);
+	
 }

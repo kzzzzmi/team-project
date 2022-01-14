@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/nav.css" />
 <script
       src="https://kit.fontawesome.com/0bd5e629f4.js"
       crossorigin="anonymous"
 ></script>
-<link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="nav.css" />
 </head>
 <body>
 	<header>
@@ -26,9 +26,9 @@
 		</div>
 		<div class="header-middle">
 			<div class="header-profile">
-				<button type="button" class="profile-login" onclick="location.href='/signin'">
+				<button type="button" class="profile-login" onclick="location.href='/auth/signin'">
 					<div>
-						<img src="images/profile_img.png" />
+						<img src="/images/profile_img.png" />
 					</div>
 					<div>로그인 하기</div>
 				</button>

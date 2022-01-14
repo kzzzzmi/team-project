@@ -67,7 +67,7 @@
             <div class="board-profile">
               <button class="board-profile-btn">
                 <div class="board-profile-img">
-                  <img src="images/profile_img.png" />
+                  <img src="/images/profile_img.png" />
                 </div>
                 <div>
                   <div class="board-profile-username">고죠</div>

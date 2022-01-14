@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +9,6 @@
 <title>네이버 로그인</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/auth/signin.css">
-<script src="https://kit.fontawesome.com/51db22a717.js"
-	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,30 +22,32 @@
 					</select>
 				</div>
 				<div class="logo-wrap">
-					<a href=""><img src="images/naver.png"></a>
-
+					<a href="../index"><img src="/images/naver.png"></a>
 				</div>
 			</header>
 			<section class="login-input-section-wrap">
 				<div class="Keyboard">
 					<button>
 						PC 키보드 보기<i class="fas fa-chevron-down"></i>
+						</button>
 				</div>
-				<div class="login-input-wrap">
-					<div class="login-input-icon">
-						<i class="far fa-user"></i>
+				<form action="/auth/signin" method="post">
+					<div class="login-input-wrap">
+						<div class="login-input-icon">
+							<i class="far fa-user"></i>
+						</div>
+						<input type="text" name="username" placeholder="아이디"></input>
 					</div>
-					<input placeholder="아이디" type="text"></input>
-				</div>
-				<div class="login-input-wrap password-wrap">
-					<div class="login-input-icon">
-						<i class="fas fa-unlock"></i>
+					<div class="login-input-wrap password-wrap">
+						<div class="login-input-icon">
+							<i class="fas fa-unlock"></i>
+						</div>	
+						<input type="password" name="password" placeholder="비밀번호"></input>
 					</div>
-					<input placeholder="비밀번호" type="password"></input>
-				</div>
-				<div class="login-button-wrap">
-					<button>로그인</button>
-				</div>
+					<div class="login-button-wrap">
+						<button type="submit">로그인</button>
+					</div>
+				</form>
 				<div class="login-stay-sign-in">
 					<i class="far fa-check-circle"></i> <span>로그인 상태 유지</span>
 				</div>
@@ -76,16 +75,18 @@
 			</section>
 			<footer>
 				<div class="copyright-wrap">
-					<span> <img src="images/naverfootimg.png"></span>
+					<span> <img src="/images/naverfootimg.png"></span>
 				</div>
 				<div class="footer-logo">
-					<a href="#"> <img src="images/naverfooter_logo.png" alt="">
+					<a href="#"> <img src="/images/naverfooter_logo.png" alt="">
 					</a> <a href="#"> <span>회원정보 고객센터</span>
 					</a>
 				</div>
 			</footer>
 		</div>
 	</div>
+	<script src="https://kit.fontawesome.com/51db22a717.js"
+	crossorigin="anonymous"></script>
 </body>
 
 </html>

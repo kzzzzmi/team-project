@@ -2,5 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.springboot.placenote.domain.user.UserRepository">
-	
+	<select id="getUserByUsername" parameterType="String" resultType="com.springboot.placenote.domain.user.User">
+		SELECT
+			*
+		FROM
+			user_mst
+		WHERE
+			username = #{username};
+	</select>
 </mapper>
