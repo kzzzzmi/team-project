@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.springboot.placenote.domain.user.User;
+import com.springboot.placenote.domain.user.UserDtl;
 import com.springboot.placenote.domain.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,6 @@ public class PrincipalDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User userEntity = userRepository.getUserByUsername(username);
-		System.out.println(userEntity);
 		if(userEntity == null) {
 			return null;
 		} else {

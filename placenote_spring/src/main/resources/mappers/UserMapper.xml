@@ -10,4 +10,41 @@
 		WHERE
 			username = #{username};
 	</select>
+	
+	<select id="checkUsernameByUsername" parameterType="String" resultType="Integer">
+		SELECT
+			COUNT(username)
+		FROM
+			user_mst
+		WHERE
+			username = #{username};
+	</select>
+	
+	<select id="getUserDtlById" parameterType="Integer" resultType="com.springboot.placenote.domain.user.UserDtl">
+		SELECT
+			*
+		FROM
+			user_dtl
+		WHERE
+			id = #{id};
+	</select>
+	
+	<insert id="insertUser" parameterType="com.springboot.placenote.domain.user.User">
+		INSERT INTO
+			user_mst
+		VALUES(
+			0,
+			#{username},
+			#{password},
+			#{name},
+			#{phone},
+			#{email},
+			#{gender},
+			#{birthday},
+			#{role},
+			NOW(),
+			NOW()
+		);
+	</insert>
+	
 </mapper>

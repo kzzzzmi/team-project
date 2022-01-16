@@ -68,7 +68,7 @@
 						<p class="forget-msg">아이디 찾기</p>
 					</a> <a href="#" class="fotget-msg-middle">
 						<p class="forget-msg">비밀번호 찾기</p>
-					</a> <a href="#">
+					</a> <a href="/auth/signup">
 						<p class="forget-msg">회원가입</p>
 					</a>
 				</div>

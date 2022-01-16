@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.springboot.placenote.domain.user.User;
+import com.springboot.placenote.domain.user.UserDtl;
 
 import lombok.Data;
 
