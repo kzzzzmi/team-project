@@ -172,3 +172,12 @@ address {
 em {
   margin-right: 5px;
 }
+
+.auth-number-btn {
+	cursor: pointer;
+}
+
+.auth-check-btn {
+	display: none;
+	cursor: pointer;
+}

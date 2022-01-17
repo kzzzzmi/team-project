@@ -29,16 +29,15 @@
 								<label for="id">아이디</label>
 							</h3>
 							<input type="text" id="username" class="long_text su-inputs"
-								maxlength="12" required /> <span class="text_required">필수
-								정보입니다.</span> <span class="idCheck_false">이미 존재하는 아이디입니다.</span>
+								maxlength="12" required /> <span class="idCheck_false">이미
+								존재하는 아이디입니다.</span>
 						</div>
 						<div class="join_row">
 							<h3 class="join_title">
 								<label for="password">비밀번호</label>
 							</h3>
 							<input type="password" class="long_text su-inputs" maxlength="20"
-								id="password" required /> <span class="text_required">필수
-								정보입니다.</span>
+								id="password" required />
 						</div>
 						<div class="join_row">
 							<h3 class="join_title">
@@ -55,7 +54,7 @@
 								<label for="name">이름</label>
 							</h3>
 							<input type="text" class="long_text su-inputs" id="name" required />
-							<span class="text_required">필수 정보입니다.</span>
+
 						</div>
 						<div class="join_row">
 							<h3 class="join_title">
@@ -64,14 +63,14 @@
 							<select class="long_text su-inputs" id="gender">
 								<option value="남성">남성</option>
 								<option value="여성">여성</option>
-							</select> <span class="text_required">필수 정보입니다.</span>
+							</select>
 						</div>
 						<div class="join_row">
 							<h3 class="join_title">
 								<label for="email">본인확인 이메일</label>
 							</h3>
 							<input type="email" class="long_text su-inputs" id="email"
-								required /> <span class="text_required">필수 정보입니다.</span>
+								required />
 						</div>
 						<div class="join_row">
 							<h3 class="join_title">
@@ -79,11 +78,17 @@
 							</h3>
 							<div class="phone_flex">
 								<input type="tel" class="long_text su-inputs"
-									placeholder="전화번호 입력" required />
-								<button type="button" class="short_text">인증번호 받기</button>
+									placeholder="전화번호 입력 ( - 생략)" required />
+								<button type="button" class="short_text auth-number-btn">인증번호
+									받기</button>
 							</div>
-							<input type="text" class="long_text" placeholder="인증번호를 입력하세요"
-								readonly /> <span class="text_required">필수 정보입니다.</span>
+							<div class="phone_flex">
+								<input type="text" class="long_text phoneCheck" placeholder="인증번호를 입력하세요 (6자리)"
+									readonly />
+								<button type="button" class="short_text auth-check-btn">인증번호
+									확인</button>
+							</div>
+
 							<div class="join_row">
 								<button type="button" class="join_submit">가입하기</button>
 							</div>
