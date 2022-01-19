@@ -35,12 +35,13 @@
 		VALUES(
 			0,
 			#{username},
+			#{oauth2_username},
 			#{password},
+			#{provider},
 			#{name},
 			#{phone},
 			#{email},
 			#{gender},
-			#{birthday},
 			#{role},
 			NOW(),
 			NOW()
