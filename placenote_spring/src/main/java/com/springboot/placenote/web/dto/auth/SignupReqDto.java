@@ -13,7 +13,6 @@ import lombok.Data;
 @Data
 public class SignupReqDto {
 	@NotBlank
-	@Size(min = 4, max = 12)
 	private String username;
 	@NotBlank
 	@Size(max = 20)
