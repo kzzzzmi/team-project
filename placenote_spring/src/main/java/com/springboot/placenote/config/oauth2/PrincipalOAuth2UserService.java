@@ -20,57 +20,46 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class PrincipalOAuth2UserService extends DefaultOAuth2UserService{
-    
-    
-    private final UserRepository userRepository;
-    
-    @Override 
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-	System.out.println(userRequest.getClientRegistration());
-	System.out.println(userRequest.getAccessToken());
-	OAuth2User oAuth2User = super.loadUser(userRequest);
-	Map<String , Object>oAuth2UserAttributes = oAuth2User.getAttributes();
-	String provider = userRequest.getClientRegistration().getRegistrationId();
-	String providerId = "";
-	if(provider.equals("naver")) {
-	    oAuth2UserAttributes = (Map<String , Object>)oAuth2User.getAttributes().get("response");
-	    providerId = (String)oAuth2UserAttributes.get("id");
-	}else {
-	    providerId = UUID.randomUUID().toString().replaceAll("-", "");
-	}
-	String oauth2_username = provider + "_" + providerId;
-	//naver_ajdhaksjdhoashdioshfijsdnkjanskfnaskf
-	String gender = (String)oAuth2UserAttributes.get("gender");
-	if(gender.equals("M")) {
-	    gender ="남성";
-	}else {
-	    gender = "여성";
-	}
+public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
 
-	String mobile = (String)oAuth2UserAttributes.get("mobile");
-	mobile = mobile.replace("-", "");
-	System.out.println(mobile);
-	OAuth2UserDto oAuth2UserDto = OAuth2UserDto.builder()
-		.oauth2_username(oauth2_username)
-		.email((String)oAuth2UserAttributes.get("email"))
-		.name((String)oAuth2UserAttributes.get("name"))
-		.provider(provider)
-		.role("ROLE_USER")
-		.gender(gender)
-		.phone(mobile)
-		.build();
-	
-	User userEntity = userRepository.getUserByOAuth2Username(oauth2_username);
-	if(userEntity == null) {
-	    userEntity = oAuth2UserDto.toEntity();
-	    userEntity.setPassword(new BCryptPasswordEncoder().encode("1234"));
-	    userRepository.insertUser(userEntity);
-	    userEntity = userRepository.getUserByOAuth2Username(oauth2_username);
+	private final UserRepository userRepository;
+
+	@Override
+	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+		OAuth2User oAuth2User = super.loadUser(userRequest);
+		Map<String, Object> oAuth2UserAttributes = oAuth2User.getAttributes();
+		String provider = userRequest.getClientRegistration().getRegistrationId();
+		String providerId = "";
+		if (provider.equals("naver")) {
+			oAuth2UserAttributes = (Map<String, Object>) oAuth2User.getAttributes().get("response");
+			providerId = (String) oAuth2UserAttributes.get("id");
+		} else {
+			providerId = UUID.randomUUID().toString().replaceAll("-", "");
+		}
+		String oauth2_username = provider + "_" + providerId;
+
+		String gender = (String) oAuth2UserAttributes.get("gender");
+		if (gender.equals("M")) {
+			gender = "남성";
+		} else {
+			gender = "여성";
+		}
+
+		String mobile = (String) oAuth2UserAttributes.get("mobile");
+		mobile = mobile.replace("-", "");
+		OAuth2UserDto oAuth2UserDto = OAuth2UserDto.builder().oauth2_username(oauth2_username)
+				.email((String) oAuth2UserAttributes.get("email")).name((String) oAuth2UserAttributes.get("name"))
+				.provider(provider).role("ROLE_USER").gender(gender).phone(mobile).build();
+
+		User userEntity = userRepository.getUserByOAuth2Username(oauth2_username);
+		if (userEntity == null) {
+			userEntity = oAuth2UserDto.toEntity();
+			userEntity.setPassword(new BCryptPasswordEncoder().encode("&#$%$#%$#%$#56456561%"));
+			userRepository.insertUser(userEntity);
+			userEntity = userRepository.getUserByOAuth2Username(oauth2_username);
+		}
+		UserDtl userDtlEntity = userRepository.getUserDtlById(userEntity.getId());
+
+		return new PrincipalDetails(userEntity, userDtlEntity, oAuth2UserAttributes);
 	}
-	UserDtl userDtlEntity = userRepository.getUserDtlById(userEntity .getId());
-	
-		
-        return new PrincipalDetails(userEntity , userDtlEntity ,oAuth2UserAttributes);
-    }
 }

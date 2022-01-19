@@ -10,53 +10,53 @@ import com.springboot.placenote.config.auth.PrincipalDetails;
 
 @Controller
 public class PageController {
-	
-	@GetMapping({"/", "/index"})
+
+	@GetMapping({ "/", "/index" })
 	public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-	    
+
 		return "index";
 	}
-	
+
 	@GetMapping("/auth/signin")
 	public String signinPage() {
 		return "/auth/signin";
 	}
-	
+
 	@GetMapping("/auth/signup")
 	public String signupPage() {
 		return "/auth/signup";
 	}
+
 	@GetMapping("/feed/my_feed")
-	 public String MyfeedPage() {
-	    return "/feed/my_feed";
-	     
-	 }
+	public String MyfeedPage() {
+		return "/feed/my_feed";
+
+	}
+
 	@GetMapping("/feed/my_feedImg")
-	 public String MyfeedImgPage() {
-	    return "/feed/my_feedImg";
-	     
-	 }
-	
+	public String MyfeedImgPage() {
+		return "/feed/my_feedImg";
+
+	}
+
 	@GetMapping("/feed/feed")
-	 public String feedPage() {
-	    return "/feed/feed";
-	     
-	 }
+	public String feedPage() {
+		return "/feed/feed";
+	}
+
 	@GetMapping("/feed/feedImg")
 	public String feedImg() {
-	    return "/feed/feedImg";
+		return "/feed/feedImg";
 	}
-	@GetMapping("follow/followInfo")
-	public String followInfo() {
-	    return "follow/followInfo";
-	}
+
 	@GetMapping("follow/follow")
 	public String follow() {
-	    return "follow/follow";
+		return "follow/follow";
 	}
+
 	@GetMapping("follow/following")
 	public String following() {
-	    return "follow/following";
+		return "follow/following";
 	}
-	
+
 }
