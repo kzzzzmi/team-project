@@ -1,0 +1,142 @@
+html{
+    width: 100%;
+    height: 100%;
+    background-color: #0000000D;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    fill: #c9c9ca;
+    margin: 0;
+
+}
+nav{
+    background-color: white;
+}
+.back-page-btn{
+    font-size: 20px;
+    font-weight: bold;
+}
+.menu-box{
+    padding-top: 10px;
+    background: #fff;
+    border-bottom: 1px solid #c9c9c9;
+    box-shadow :0 1px 1px 0 rgba(158, 155, 155, 0.356); 
+ 
+}
+.menu{
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px 20px 0;
+    
+}
+.menu-btn{
+    padding-bottom: 20px;
+    margin-top: 5px;
+}
+.menu-btn button{
+    padding: 0 14px;
+    border: 2px solid #eaeef2;
+    font-size: 16px;
+    border-radius: 19px;
+    font-weight: 500;
+    line-height: 2.7rem;
+    background-color: white;
+}
+.menu-btn button:focus{
+    background-color: #333333;
+    color: white;
+}
+.menu-btn span{
+    color: #00b49b;
+}
+.follow-box{
+    display: flex;
+    height: 800px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    word-break: keep-all;
+
+}
+.follow-box i , p{
+    color: #9e9ea3;
+    display: block;
+    font-size: 20px;
+}
+.following-info-box{
+    width: 100%;
+    padding: 0 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: white;
+}
+ul{
+    list-style: none;
+}
+li{
+    text-align: -webkit-match-parent;
+}
+button{
+    border: none;
+}
+.following-btn-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 20px 20px 20px 25px;
+    border-bottom: 2px solid #f9f9f9;
+    
+}
+.following-img-btn{
+    overflow: hidden;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+   
+}
+
+.following-img-btn img{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.following-name-btn-box{
+    overflow: hidden;
+    flex: 1;
+    margin-left: 12px;
+}
+.following-name-btn{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    font-size: 1rem;
+    background-color: white;
+}
+.follow-btn-box{
+    flex: none;
+    margin-left: 10px;
+    
+}
+.follow-btn{
+	border : none;
+    font-size: 14px;
+    font-weight: 500;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+    color: #2d8dee;
+    background-color: #f3f9fe;
+    border-radius: 5px;
+    
+}
+

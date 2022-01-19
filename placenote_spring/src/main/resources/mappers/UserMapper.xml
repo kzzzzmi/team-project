@@ -10,6 +10,14 @@
 		WHERE
 			username = #{username};
 	</select>
+	<select id="getUserByOAuth2Username" parameterType="String" resultType="com.springboot.placenote.domain.user.User">
+		SELECT
+			*
+		FROM
+			user_mst
+		WHERE
+			oauth2_username = #{oauth2_username};
+	</select>
 	
 	<select id="checkUsernameByUsername" parameterType="String" resultType="Integer">
 		SELECT
@@ -29,22 +37,24 @@
 			id = #{id};
 	</select>
 	
-	<insert id="insertUser" parameterType="com.springboot.placenote.domain.user.User">
+	<insert id="insertUser"  parameterType="com.springboot.placenote.domain.user.User">
 		INSERT INTO
 			user_mst
 		VALUES(
 			0,
 			#{username},
+			#{oauth2_username},
 			#{password},
+			#{provider},
 			#{name},
 			#{phone},
 			#{email},
 			#{gender},
-			#{birthday},
 			#{role},
 			NOW(),
 			NOW()
 		);
 	</insert>
+	
 	
 </mapper>

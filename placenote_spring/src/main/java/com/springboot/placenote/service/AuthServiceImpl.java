@@ -1,10 +1,11 @@
 package com.springboot.placenote.service;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import com.springboot.placenote.domain.user.User;
-import com.springboot.placenote.domain.user.UserDtl;
 import com.springboot.placenote.domain.user.UserRepository;
 import com.springboot.placenote.web.dto.auth.SignupReqDto;
 
@@ -13,7 +14,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class AuthServiceImpl implements AuthService {
-	
+    
+    	@Autowired
 	private final UserRepository userRepository;
 	
 	public boolean usernameCheck(String username) {
@@ -38,5 +40,8 @@ public class AuthServiceImpl implements AuthService {
 		}
 		return false;
 	}
+
 	
+
+
 }

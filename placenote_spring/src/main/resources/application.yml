@@ -19,13 +19,42 @@ spring:
     user:
       name: test
       password: 1234
+    oauth2:
+      client:
+        registration:
+          naver:
+            client-id: Wh3vFjQQxHMlSmafiHso
+            client-secret: 677ynLZlty
+            redirect-uri: http://localhost:8000/login/oauth2/code/naver
+            authorization-grant-type: authorization_code
+            scope: 
+            - name
+            - email
+            - mobile 
+            - gender
+            client-name: Naver
+        provider:
+          naver:
+            authorization-uri: https://nid.naver.com/oauth2.0/authorize
+            token-uri: https://nid.naver.com/oauth2.0/token
+            user-info-uri: https://openapi.naver.com/v1/nid/me
+            user-name-attribute: response
+             
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://121.175.150.249:3306/project_20220113_02?useUnicode=true
     username: tp220113_02
     password: 1685
     
+    
+   
+
+   
 mybatis:
   mapper-locations:
   - /mappers/*.xml
+
+
+
+ 
   

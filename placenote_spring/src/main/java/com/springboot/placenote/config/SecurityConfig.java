@@ -7,10 +7,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.springboot.placenote.config.auth.PrincipalDetails;
+import com.springboot.placenote.config.oauth2.PrincipalOAuth2UserService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    	private final PrincipalOAuth2UserService principalOAuth2UserService; 
+    
 	@Bean
 	public BCryptPasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
@@ -20,8 +28,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 
-		http.authorizeRequests().antMatchers("/", "/index").authenticated().anyRequest().permitAll().and().formLogin()
-				.usernameParameter("username").passwordParameter("password").loginPage("/auth/signin")
-				.loginProcessingUrl("/auth/signin").defaultSuccessUrl("/");
+		http.authorizeRequests()
+		.antMatchers("/", "/index" , "./feed/**" , "follow/**")
+		.authenticated()
+		.anyRequest()
+		.permitAll()
+		.and()
+		.formLogin()	
+		.usernameParameter("username")
+		.passwordParameter("password")
+		.loginPage("/auth/signin")
+		.loginProcessingUrl("/auth/signin")
+		.defaultSuccessUrl("/")
+		.and()
+		.oauth2Login()
+		.loginPage("/auth/signin")
+		.userInfoEndpoint()
+		.userService(principalOAuth2UserService)
+		.and()
+		.defaultSuccessUrl("/");
 	}
 }

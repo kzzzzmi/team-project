@@ -1,7 +1,10 @@
 package com.springboot.placenote.web.controller;
 
+
+
 import javax.validation.Valid;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 public class AuthController {
 	
+    
 	private final AuthService authService;
 	
 	@GetMapping("/auth/username-check")
@@ -28,5 +32,7 @@ public class AuthController {
 	public boolean signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) {
 		return authService.insertAfterValidCheck(signupReqDto, bindingResult);
 	}
+
+
 	
 }

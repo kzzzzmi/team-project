@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class PrincipalDetailsService implements UserDetailsService {
 
+    
 	private final UserRepository userRepository;
 	
 	@Override
@@ -23,7 +24,8 @@ public class PrincipalDetailsService implements UserDetailsService {
 		if(userEntity == null) {
 			return null;
 		} else {
-			return new PrincipalDetails(userEntity);
+		    UserDtl userDtlEntity = userRepository.getUserDtlById(userEntity.getId());
+			return new PrincipalDetails(userEntity , userDtlEntity);
 		}	
 	}
 

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%@ taglib uri = "http://www.springframework.org/security/tags"  prefix="sec"%>
+	<sec:authorize access="isAuthenticated">
+	<sec:authentication property="principal" var ="principal"/>
+	</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +31,11 @@
 		</div>
 		<div class="header-middle">
 			<div class="header-profile">
-				<button type="button" class="profile-login" onclick="location.href='/auth/signin'">
+				<button type="button" class="profile-login" onclick="location.href = '/feed/my_feed'">
 					<div>
-						<img src="/images/profile_img.png" />
+						<img src="/images/profile_img.png" >
 					</div>
-					<div>로그인 하기</div>
+					<div>${principal.getUsername()}</div>
 				</button>
 				<div class="upload-board-btn">
 					<button>
