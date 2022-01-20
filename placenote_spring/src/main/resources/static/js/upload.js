@@ -22,7 +22,7 @@ function uploadSubmit() {
 		processData: false,
 		contentType: false,
 		success: function(data) {
-			
+			alert('추가 성공');
 		},
 		error: function() {
 			alert('비동기 처리 오류');

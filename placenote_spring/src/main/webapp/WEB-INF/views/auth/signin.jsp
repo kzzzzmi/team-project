@@ -92,7 +92,6 @@
 	</div>
 	<script src="https://kit.fontawesome.com/51db22a717.js"
 	crossorigin="anonymous"></script>
-	<script src="/js/signin.js"></script>
 </body>
 
 </html>

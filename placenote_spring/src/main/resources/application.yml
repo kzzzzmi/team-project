@@ -51,7 +51,7 @@ mybatis:
   - /mappers/*.xml
 
 file:
-  path: C:\Users\kjm27\Desktop\team-project\placenote
+  path: D:\fileupload
 
 
  

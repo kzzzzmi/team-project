@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
+import com.springboot.placenote.domain.board.Board;
 import com.springboot.placenote.domain.board.BoardRepository;
 import com.springboot.placenote.web.dto.board.BoardReqDto;
 
@@ -29,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	public boolean insertBoard(BoardReqDto boardReqDto, PrincipalDetails principalDetails) {
 		List<MultipartFile> files = boardReqDto.getFiles();
-		int result = 0;
+		List<String> boardImgs = new ArrayList<>();
 		
 		for(int i = 0; i < files.size(); i++) {
 			String imgFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + files.get(i).getOriginalFilename();
@@ -40,15 +42,21 @@ public class BoardServiceImpl implements BoardService {
 			if(!file.exists()) {
 				file.mkdirs();
 			}
-			
 			try {
 				Files.write(imgPath, files.get(i).getBytes());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			
+			boardImgs.add(boardImg);
 		}	
+		
+		Board boardEntity = boardReqDto.toBoardEntity(principalDetails.getUser().getId(), boardImgs);	
+		int result = boardRepository.insertBoard(boardEntity);
+		
+		if(result == 1) {
+			boardRepository.insertFiles(boardEntity);
+			return true;
+		}
 		return false;
 	}
 	

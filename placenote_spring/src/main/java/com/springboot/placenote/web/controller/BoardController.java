@@ -18,7 +18,6 @@ public class BoardController {
 	
 	@PostMapping("/upload")
 	public boolean insertBoard(BoardReqDto boardReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(boardReqDto);
 		return boardService.insertBoard(boardReqDto, principalDetails);
 	}
 	

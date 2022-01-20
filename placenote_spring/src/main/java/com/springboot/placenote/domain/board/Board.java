@@ -13,12 +13,12 @@ public class Board {
 	private int file_id;
 	
 	private int writer;
-	private List<String> file_name;
 	private String keyword;
 	private String place_name;
 	private String location;
 	private String board_content;
+	private List<String> file_name;
 	
 	private LocalDateTime create_date;
-	private LocalDateTime update_date; 
+	private LocalDateTime update_date;
 }
