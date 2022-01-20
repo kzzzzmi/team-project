@@ -10,9 +10,5 @@ public interface UserRepository {
 	public UserDtl getUserDtlById(int id);
 	public int checkUsernameByUsername(String username);
 	public int insertUser(User user);
-	
-	
-	
-	
-	
+
 }

@@ -13,7 +13,6 @@ public class PageController {
 
 	@GetMapping({ "/", "/index" })
 	public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-
 		return "index";
 	}
 
@@ -27,36 +26,9 @@ public class PageController {
 		return "/auth/signup";
 	}
 
-	@GetMapping("/feed/my_feed")
-	public String MyfeedPage() {
-		return "/feed/my_feed";
-
-	}
-
-	@GetMapping("/feed/my_feedImg")
-	public String MyfeedImgPage() {
-		return "/feed/my_feedImg";
-
-	}
-
-	@GetMapping("/feed/feed")
-	public String feedPage() {
-		return "/feed/feed";
-	}
-
-	@GetMapping("/feed/feedImg")
-	public String feedImg() {
-		return "/feed/feedImg";
-	}
-
-	@GetMapping("follow/follow")
-	public String follow() {
-		return "follow/follow";
-	}
-
-	@GetMapping("follow/following")
-	public String following() {
-		return "follow/following";
+	@GetMapping("/upload")
+	public String uploadPage() {
+		return "/upload/upload";
 	}
 
 }
