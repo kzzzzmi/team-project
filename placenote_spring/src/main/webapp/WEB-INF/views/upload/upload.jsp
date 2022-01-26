@@ -27,55 +27,52 @@
 				</div>
 			</div>
 
-			<div class="text-body-toolBox">
-				<div class="body-toolBox-iconBox">
-					<div class="body-iconBox">
-						<div class="iconBox-icon">
-							<div class="iconBox-icon-img">
-								<i class="far fa-image"></i>
-							</div>
-							<div class="iconBox-icon-name">사진</div>
-						</div>
-
-						<div class="iconBox-icon">
-							<div class="iconBox-icon-img">
-								<i class="fas fa-map-marker-alt"></i>
-							</div>
-							<div class="iconBox-icon-name">장소</div>
-						</div>
-						<div class="iconBox-icon">
-							<div class="iconBox-icon-img">
-								<i class="fas fa-laugh"></i>
-							</div>
-							<div class="iconBox-icon-name">스티커</div>
-						</div>
-						<div class="iconBox-icon">
-							<div class="iconBox-icon-img">
-								<i class="fas fa-quote-left"></i>
-							</div>
-							<div class="iconBox-icon-name">인용구</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="body-fontBox">
-					<div class="fontBox-items">
-						<div class="fontBox-items-left">
-							<select name="keyword">
-								<option value="ko_food">한식</option>
-								<option value="ch_food">중식</option>
-								<option value="ja_food">일식</option>
-								<option value="it_food">양식</option>
-								<option value="ca_food">카페</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="file-boxs">
-				<div class="file-box"></div>
-			</div>
 			<form action="">
+				<div class="text-body-toolBox">
+					<div class="body-toolBox-iconBox">
+						<div class="body-iconBox">
+							<div class="iconBox-icon">
+								<div class="iconBox-icon-img">
+									<i class="far fa-image"></i>
+								</div>
+								<div class="iconBox-icon-name">사진</div>
+							</div>
+
+							<div class="iconBox-icon">
+								<div class="iconBox-icon-img">
+									<i class="fas fa-map-marker-alt"></i>
+								</div>
+								<div class="iconBox-icon-name">장소</div>
+							</div>
+							<div class="iconBox-icon">
+								<div class="iconBox-icon-img">
+									<i class="fas fa-laugh"></i>
+								</div>
+								<div class="iconBox-icon-name">스티커</div>
+							</div>
+							<div class="iconBox-icon">
+								<div class="iconBox-icon-img">
+									<i class="fas fa-quote-left"></i>
+								</div>
+								<div class="iconBox-icon-name">인용구</div>
+							</div>
+						</div>
+					</div>
+					<div class="body-fontBox">
+						<div class="fontBox-items">
+							<div class="fontBox-items-left">
+								<select name="keyword">
+									<option value="한식">한식</option>
+									<option value="중식">중식</option>
+									<option value="일식">일식</option>
+									<option value="양식">양식</option>
+									<option value="카페">카페</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="file-boxes"></div>
 				<div class="text-body-main">
 					<div class="text-body-mainBox">
 						<div class="mainBox-text">
@@ -86,7 +83,8 @@
 						</div>
 					</div>
 				</div>
-				<input type="file" class="file" name="files" multiple="multiple" accept=".png, .jpeg, .jpg" />
+				<input type="file" class="file" name="files" multiple="multiple"
+					accept=".png, .jpeg, .jpg" />
 			</form>
 		</div>
 	</div>

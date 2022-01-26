@@ -31,4 +31,9 @@ public class PageController {
 		return "/upload/upload";
 	}
 
+	@GetMapping("/insert")
+	public String insertProduct() {
+		return "/product/product";
+	}
+	
 }

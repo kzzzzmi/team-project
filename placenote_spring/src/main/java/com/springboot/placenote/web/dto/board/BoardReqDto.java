@@ -11,12 +11,14 @@ import lombok.Data;
 @Data
 public class BoardReqDto {
 	private List<MultipartFile> files;
+	private String keyword;
 	private String placeName;
 	private String boardContent;
 	
 	public Board toBoardEntity(int userId, List<String> boardImg) {
 		return Board.builder()
 				.writer(userId)
+				.keyword(keyword)
 				.place_name(placeName)
 				.board_content(boardContent)
 				.file_name(boardImg)

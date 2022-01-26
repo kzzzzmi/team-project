@@ -2,9 +2,10 @@ package com.springboot.placenote.web.controller;
 
 import java.util.Random;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class AuthController {
-	
-    
+ 
 	private final AuthService authService;
 	private final CertifiedService certifiedService;
 	
@@ -31,12 +31,10 @@ public class AuthController {
 	}
 	
 	@PostMapping("/auth/signup")
-	public boolean signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) {
+	public boolean signup(@Valid SignupReqDto signupReqDto, HttpServletRequest request ,BindingResult bindingResult) throws ServletException {
 		return authService.insertAfterValidCheck(signupReqDto, bindingResult);
 	}
 
-
-	
 	@GetMapping("/auth/sendSMS")
 	public String sendSMS(String phoneNumber) {
 		Random random = new Random();

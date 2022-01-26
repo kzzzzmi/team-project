@@ -54,7 +54,6 @@ public class BoardServiceImpl implements BoardService {
 		int result = boardRepository.insertBoard(boardEntity);
 		
 		if(result == 1) {
-			boardRepository.insertFiles(boardEntity);
 			return true;
 		}
 		return false;

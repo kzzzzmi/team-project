@@ -77,13 +77,13 @@
 								<label for="phone">휴대전화</label>
 							</h3>
 							<div class="phone_flex">
-								<input type="tel" class="long_text su-inputs"
+								<input type="tel" class="long_text su-inputs" maxlength="11"
 									placeholder="전화번호 입력 ( - 생략)" required />
 								<button type="button" class="short_text auth-number-btn">인증번호
 									받기</button>
 							</div>
 							<div class="phone_flex">
-								<input type="text" class="long_text phoneCheck" placeholder="인증번호를 입력하세요 (6자리)"
+								<input type="text" class="long_text phoneCheck" placeholder="인증번호를 입력하세요 (6자리)" maxlength="6"
 									readonly />
 								<button type="button" class="short_text auth-check-btn">인증번호
 									확인</button>

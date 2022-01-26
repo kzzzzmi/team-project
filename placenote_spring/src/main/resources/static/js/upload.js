@@ -1,10 +1,33 @@
 const iconBoxIcon = document.querySelectorAll(".iconBox-icon");
 const file = document.querySelector(".file");
-const fileBox = document.querySelector('.file-box');
 const uploadBtn = document.querySelector('.body-header-save-btn');
 const textContent = document.querySelector('#text-content');
 const form = document.querySelector('form');
 const textTitle = document.querySelector('#text-title');
+const fileBoxes = document.querySelector('.file-boxes');
+
+var file_box = [];
+
+file.onchange = (event) => {
+	file_box = [];
+	$(".file-boxes").empty();
+
+	let files = event.target.files;
+	let fileArr = Array.prototype.slice.call(files);
+
+	let index = 0;
+	fileArr.forEach(function(file) {
+		file_box.push(file);
+
+		let reader = new FileReader();
+		reader.onload = () => {
+			let html = "<div>content</div>";
+			$(".file-boxes").append(html);
+			index++;
+		}
+		reader.readAsDataURL(file);
+	})
+}
 
 iconBoxIcon[0].onclick = () => {
 	file.click();
@@ -23,6 +46,7 @@ function uploadSubmit() {
 		contentType: false,
 		success: function(data) {
 			alert('추가 성공');
+			location.href = "/index";
 		},
 		error: function() {
 			alert('비동기 처리 오류');
@@ -48,3 +72,4 @@ function isEmpty(str) {
 		return false;
 	}
 }
+

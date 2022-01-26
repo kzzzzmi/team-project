@@ -6,6 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface BoardRepository {
 
 	public int insertBoard(Board board);
-	public int insertFiles(Board board);
 	
 }

@@ -69,7 +69,25 @@ function signup() { // 회원가입 ajax와 다음 페이지 설정
 	if (signupFlag == 'false') {
 		alert('회원가입 실패');
 	} else {
-		location.replace('/auth/signin');
+		alert('회원가입 성공');
+		
+		let signinObj = {
+			username: signupObj.username,
+			password: signupObj.password
+		};
+		
+		$.ajax({
+			type: "POST",
+			url: "/auth/signin",
+			data: signinObj,
+			dataType: "text",
+			success: function() {
+				location.href = "/index";
+			},
+			error: function() {
+				alert("비동기 처리 오류");
+			}
+		})
 	}
 }
 
