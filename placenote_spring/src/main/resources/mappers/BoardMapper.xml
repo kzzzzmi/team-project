@@ -4,15 +4,16 @@
 <mapper
 	namespace="com.springboot.placenote.domain.board.BoardRepository">
 	<select id="create_key">
-		
+
 	</select>
 	<insert id="insertBoard"
 		parameterType="com.springboot.placenote.domain.board.Board">
-		<selectKey keyProperty="board_id" resultType="Integer" order="BEFORE">
+		<selectKey keyProperty="board_id" resultType="Integer"
+			order="BEFORE">
 			select
-				ifnull(max(board_id), 0) + 1
+			ifnull(max(board_id), 0) + 1
 			from
-				board_mst;
+			board_mst;
 		</selectKey>
 		INSERT INTO
 		board_mst
@@ -26,7 +27,7 @@
 		NOW(),
 		NOW()
 		);
-		
+
 		INSERT INTO
 		board_file
 		VALUES
@@ -39,4 +40,24 @@
 		</foreach>
 		;
 	</insert>
+
+	<select id="getBoardAll" resultType="com.springboot.placenote.domain.board.IndexBoard">
+		SELECT
+			bm.board_id,
+			ud.profile_img,
+			um.username AS writer,
+			bm.board_content,
+			GROUP_CONCAT(bf.file_name) AS file_name,
+			bm.update_date
+		FROM
+			board_mst bm
+			LEFT OUTER JOIN board_file bf ON(bf.board_id = bm.board_id)
+			LEFT OUTER JOIN user_mst um ON(um.id = bm.writer)
+			LEFT OUTER JOIN user_dtl ud ON(ud.id = bm.writer)
+		GROUP BY
+			bm.board_id
+		ORDER BY 
+			bm.update_date DESC,
+			bf.file_id ASC;
+	</select>
 </mapper>

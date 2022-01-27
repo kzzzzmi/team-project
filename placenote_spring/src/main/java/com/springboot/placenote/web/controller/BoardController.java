@@ -1,7 +1,9 @@
 package com.springboot.placenote.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
@@ -19,6 +21,11 @@ public class BoardController {
 	@PostMapping("/upload")
 	public boolean insertBoard(BoardReqDto boardReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		return boardService.insertBoard(boardReqDto, principalDetails);
+	}
+	
+	@GetMapping("/getBoardAll")
+	public Object getBoardAll(@RequestParam int page) {
+		return boardService.getBoardAll(page).getBoardList();
 	}
 	
 }

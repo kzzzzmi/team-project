@@ -16,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.springboot.placenote.config.auth.PrincipalDetails;
 import com.springboot.placenote.domain.board.Board;
 import com.springboot.placenote.domain.board.BoardRepository;
+import com.springboot.placenote.domain.board.IndexBoard;
 import com.springboot.placenote.web.dto.board.BoardReqDto;
+import com.springboot.placenote.web.dto.board.BoardRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -57,6 +59,25 @@ public class BoardServiceImpl implements BoardService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public BoardRespDto getBoardAll(int page) {
+		BoardRespDto boardRespDto = new BoardRespDto();
+		List<IndexBoard> boardListAll = boardRepository.getBoardAll();
+		System.out.println(boardListAll);
+		List<IndexBoard> boardList = new ArrayList<>();
+		
+		int start = page * 5;
+		int end = start + 5;
+		
+		while(start < end && start < boardListAll.size()) {
+			boardList.add(boardListAll.get(start));
+			start++;
+		}
+			
+		boardRespDto.setBoardList(boardList);
+		return boardRespDto;
 	}
 	
 }

@@ -152,6 +152,7 @@ header {
 
 .profile-info-top {
 	padding-left: 40px;
+	align-self: center;
 	color: white;
 }
 

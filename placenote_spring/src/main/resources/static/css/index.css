@@ -380,3 +380,7 @@
   color: #0095f6;
   cursor: pointer;
 }
+
+.select-category {
+	background-color: #2d8dee !important;
+}
