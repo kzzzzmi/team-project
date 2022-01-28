@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 public class UserDtl {
     
 	private int id;
-	
+	private int following_count;
+	private int follower_count;
 	private String profile_img;
-	
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
+	
 }

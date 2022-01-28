@@ -45,7 +45,7 @@
 			<div class="header">
 				<header class="profile-header">
 					<div class="profile-img">
-						<img src="/images/${profileRespDto.profile_img}">
+						<img src="/image/${profileRespDto.profile_img}">
 					</div>
 					<div class="profile-info">
 						<div class="profile-info-top">

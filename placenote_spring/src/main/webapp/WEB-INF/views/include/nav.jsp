@@ -52,7 +52,7 @@
 				<div class="profile-info-title-box">
 					<div class="profile-info-title">
 						<div class="profile-img-box">
-							<img src="/image/profile_img/${principal.userDtl.profile_img}">
+							<img src="/image/${principal.userDtl.profile_img}">
 						</div>
 						<div class="profile-info-top">
 							<h1 style="cursor: pointer"

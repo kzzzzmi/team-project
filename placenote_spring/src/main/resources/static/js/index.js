@@ -53,7 +53,7 @@ function getBoardItem(boardItem) {
 					<div class="board-profile">
 						<button class="board-profile-btn">
 							<div class="board-profile-img">
-								<img src="/image/profile_img/${boardItem.profile_img}" />
+								<img src="/image/${boardItem.profile_img}" />
 							</div>
 							<div>
 								<div class="board-profile-username">${boardItem.writer}</div>

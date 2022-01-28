@@ -83,5 +83,8 @@
    		where
    			fm.to_userid = #{to_userid};
 	</select>
+	<select id="followTotalCount" parameterType="" resultType="">
+	
+	</select>
 	
 </mapper>

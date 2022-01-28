@@ -47,7 +47,7 @@ function getFollow(followList) {
 		followHtml += `
 			<li class="following-btn-box">
                 <button type="button" class="following-img-btn" onclick="location.href='/my/${followList[i].username}'">
-                    <img src="/images/${followList[i].profile_img}">
+                    <img src="/image/${followList[i].profile_img}">
                 </button>
                 <div class="following-name-btn-box">
                     <button type="button" class="following-name-btn" onclick="location.href='/my/${followList[i].username}'">
