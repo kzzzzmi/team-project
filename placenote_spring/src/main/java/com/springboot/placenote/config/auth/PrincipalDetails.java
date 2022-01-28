@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.springboot.placenote.domain.user.Follow;
+import com.springboot.placenote.domain.follow.Follow;
 import com.springboot.placenote.domain.user.User;
 import com.springboot.placenote.domain.user.UserDtl;
 

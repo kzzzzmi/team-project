@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
-import com.springboot.placenote.domain.user.Follow;
+import com.springboot.placenote.domain.follow.Follow;
+import com.springboot.placenote.domain.follow.FollowRepository;
 import com.springboot.placenote.domain.user.User;
 import com.springboot.placenote.domain.user.UserDtl;
 import com.springboot.placenote.domain.user.UserRepository;
@@ -20,6 +21,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     private final UserRepository userRepository;
 
+    private final FollowRepository followRepository;
     @Override
     public ProfileRespDto getProfile(PrincipalDetails principalDetails, String username) {
 	ProfileRespDto profileRespDto = new ProfileRespDto();
@@ -33,7 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
 		Follow followEntity = Follow.builder().from_userid(principalDetails.getUser().getId())
 			.to_userid(profileRespDto.getUserid()).build();
 
-		if (userRepository.getFollow(followEntity) != null) {
+		if (followRepository.getFollow(followEntity) != null) {
 		    profileRespDto.setFollow("팔로우 취소");
 
 		} else {
@@ -48,20 +50,20 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public void follow(int fromUserId, int toUserId) {
 	Follow followEntity = Follow.builder().from_userid(fromUserId).to_userid(toUserId).build();
-	userRepository.follow(followEntity);
+	followRepository.follow(followEntity);
 
     }
 
     @Override
     public void followCancel(int fromUserId, int toUserId) {
 	Follow followEntity = Follow.builder().from_userid(fromUserId).to_userid(toUserId).build();
-	userRepository.followCancel(followEntity);
+	followRepository.followCancel(followEntity);
     }
 
     @Override
     public FollowRespDto getFollower(PrincipalDetails principalDetails , int userId) {
 	FollowRespDto followRespDto = new FollowRespDto();
-	List<Follow> followList = userRepository.getFollower(userId);
+	List<Follow> followList = followRepository.getFollower(userId);
 	if (principalDetails != null) {
 	    for (Follow follow : followList) {
 		Follow temp = new Follow();
@@ -71,7 +73,7 @@ public class ProfileServiceImpl implements ProfileService {
 		    follow.setFollow("i"); 
 		  
 		}else {
-		    if (userRepository.isFollowered(temp) == 1) {
+		    if (followRepository.isFollowered(temp) == 1) {
 			follow.setFollow("팔로우 취소");
 		    } else {
 			follow.setFollow("팔로우");
@@ -95,7 +97,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public FollowRespDto getFollowing(PrincipalDetails principalDetails, int userId) {
 	FollowRespDto followRespDto = new FollowRespDto();
-	List<Follow> followList = userRepository.getFollowing(userId);
+	List<Follow> followList = followRepository.getFollowing(userId);
 	if (principalDetails != null) {
 	    for (Follow follow : followList) {
 		Follow temp = new Follow();
@@ -104,7 +106,7 @@ public class ProfileServiceImpl implements ProfileService {
 		if (temp.getFrom_userid() == temp.getTo_userid()) {
 		    follow.setFollow("i"); 
 		}else {
-		    if (userRepository.isFollowed(temp) == 1) {
+		    if (followRepository.isFollowed(temp) == 1) {
 			follow.setFollow("팔로우 취소");
 		    } else {
 			follow.setFollow("팔로우");

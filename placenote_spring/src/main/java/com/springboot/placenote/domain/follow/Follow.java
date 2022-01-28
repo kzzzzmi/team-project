@@ -1,4 +1,4 @@
-package com.springboot.placenote.domain.user;
+package com.springboot.placenote.domain.follow;
 
 
 import lombok.AllArgsConstructor;

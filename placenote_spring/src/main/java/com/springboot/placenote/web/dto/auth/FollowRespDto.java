@@ -2,7 +2,7 @@ package com.springboot.placenote.web.dto.auth;
 
 import java.util.List;
 
-import com.springboot.placenote.domain.user.Follow;
+import com.springboot.placenote.domain.follow.Follow;
 
 import lombok.Data;
 
