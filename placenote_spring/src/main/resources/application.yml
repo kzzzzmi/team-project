@@ -15,6 +15,10 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+      
+  servlet:    multipart:      max-file-size: 10MB
+      max-request-size: 10MB
+      
   security:
     user:
       name: test
@@ -51,8 +55,5 @@ mybatis:
   - /mappers/*.xml
 
 file:
-  path: D:\fileupload\
-
-
- 
+  path: C:\fileupload\
   

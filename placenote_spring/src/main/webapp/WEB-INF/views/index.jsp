@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,34 +66,7 @@
 			</div>
 
 			<ul class="board-list">
-				<li class="board-list-item">
-					<div class="board-profile">
-						<button class="board-profile-btn">
-							<div class="board-profile-img">
-								<img src="images/profile_img.png" />
-							</div>
-							<div>
-								<div class="board-profile-username">고죠</div>
-								<div class="board-update-date">1.13 목</div>
-							</div>
-						</button>
-						<div class="board-follow-btn">
-							<button>
-								<i class="far fa-heart"></i>좋아요
-							</button>
-							<button>
-								<i class="fas fa-check"></i>팔로우
-							</button>
-						</div>
-					</div>
-					<div class="board-item-img">
-						<img src="/images/1604911318873_0.jpg" alt="" />
-					</div> <pre class="board-item-text">안녕하세요</pre>
-					<div class="board-item-comment">
-						<input type="text" />
-						<button>등록</button>
-					</div>
-				</li>
+				
 			</ul>
 		</div>
 		<div class="modal-container2">

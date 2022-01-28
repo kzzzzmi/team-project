@@ -2,9 +2,13 @@ package com.springboot.placenote.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		for(int i = 0; i < files.size(); i++) {
 			String imgFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + files.get(i).getOriginalFilename();
-			String boardImg = "board_img\\" + imgFileName;
+			String boardImg = "board_img/" + imgFileName;
 			Path imgPath = Paths.get(filePath, boardImg);
 			
 			File file = new File(filePath + "board_img");
@@ -65,14 +69,16 @@ public class BoardServiceImpl implements BoardService {
 	public BoardRespDto getBoardAll(int page) {
 		BoardRespDto boardRespDto = new BoardRespDto();
 		List<IndexBoard> boardListAll = boardRepository.getBoardAll();
-		System.out.println(boardListAll);
 		List<IndexBoard> boardList = new ArrayList<>();
 		
 		int start = page * 5;
 		int end = start + 5;
 		
 		while(start < end && start < boardListAll.size()) {
-			boardList.add(boardListAll.get(start));
+			IndexBoard board = boardListAll.get(start);
+			String formatDate = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(board.getUpdate_date());
+			board.setUpdate(formatDate);
+			boardList.add(board);
 			start++;
 		}
 			

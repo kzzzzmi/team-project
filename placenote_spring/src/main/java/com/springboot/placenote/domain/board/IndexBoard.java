@@ -14,4 +14,5 @@ public class IndexBoard {
 	private String file_name;
 	
 	private LocalDateTime update_date;
+	private String update;
 }

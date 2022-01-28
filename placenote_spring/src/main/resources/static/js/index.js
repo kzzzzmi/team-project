@@ -54,11 +54,11 @@ function getBoardItem(boardItem) {
 					<div class="board-profile">
 						<button class="board-profile-btn">
 							<div class="board-profile-img">
-								<img src="/images/${boardItem.profile_img}" />
+								<img src="/image/profile_img/${boardItem.profile_img}" />
 							</div>
 							<div>
 								<div class="board-profile-username">${boardItem.writer}</div>
-								<div class="board-update-date">${boardItem.upadate_date}</div>
+								<div class="board-update-date">${boardItem.update}</div>
 							</div>
 						</button>
 						<div class="board-follow-btn">
@@ -71,7 +71,7 @@ function getBoardItem(boardItem) {
 						</div>
 					</div>
 					<div class="board-item-img">
-						<img src="/image/${boardItem.file_name}" alt="" />
+						<img src="/image/${boardItem.file_name}" />
 					</div> <pre class="board-item-text">${boardItem.board_content}</pre>
 					<div class="board-item-comment">
 						<input type="text" />
