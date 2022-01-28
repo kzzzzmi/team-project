@@ -10,15 +10,14 @@ var page = 0;
 var boardTotal = 0;
 var boardListItems = ``;
 
-/*window.onscroll = () => {
+window.onscroll = () => {
 	let checkNum = $(document).height() - $(window).height() - $(window).scrollTop();
 	
-	if(checkNum < 1 && checkNum > -1 && boardTotal > (page + 1) * 5) {
-		alert('ok');
+	if(checkNum < 1 && checkNum > -1 && boardTotal >= (page + 1) * 5) {
 		page++;
 		boardLoad();
 	}
-}*/
+}
 
 boardLoad();
 
