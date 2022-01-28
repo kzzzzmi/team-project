@@ -19,7 +19,7 @@
 <script src="https://kit.fontawesome.com/c3df4d7d1c.js"
 	crossorigin="anonymous">
 	
-</script>
+	</script>
 
 </head>
 
@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="back-page-btn">
 				<button type="button" style="border: none; background-color: white;"
-					onclick="history.go(-1)">
+				onclick="history.go(-1)">
 					<i class="fas fa-arrow-left"></i>
 				</button>
 				<span>${username}</span>
@@ -39,24 +39,23 @@
 	<div class="menu-box">
 		<div class="menu">
 			<div class="menu-btn">
-				<button onclick="location.href='/my/${username}/following'" style="background-color: #333333 ; color: white;">
+				<button onclick="location.href='/my/${username}/following'">
 					팔로잉 <span class="following-total-count">0</span>
 				</button>
-				<button onclick="location.href='/my/${username}/follower'">
+				<button onclick="location.href= '/my/${username}/follower'" style="background-color: #333333 ; color: white;">
 					팔로워 <span class="follower-total-count">0</span>
 				</button>
 			</div>
 		</div>
 	</div>
 	<div class="following-info-box">
-		<ul class="getfollowing-info">
-
+		<ul class="getfollower-info">
+		
 		</ul>
 	</div>
 	<input type="hidden" value="${username}" class="getUsername">
-
-	<script src="/js/followingInfo.js"></script>
-
+	
+	<script src="/js/followerInfo.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 package com.springboot.placenote.domain.user;
 
-import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class UserDtl {
+public class Follow {
     
-	private int id;
-	
+    	private int from_userid;
+	private int to_userid;
+	private String username;
 	private String profile_img;
-	
-	private LocalDateTime create_date;
-	private LocalDateTime update_date;
+	private String follow;
+
 }

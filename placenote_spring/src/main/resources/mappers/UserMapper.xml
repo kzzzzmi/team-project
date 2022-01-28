@@ -56,5 +56,85 @@
 		);
 	</insert>
 	
+	<select id="getFollow" resultType="com.springboot.placenote.domain.user.Follow" parameterType="com.springboot.placenote.domain.user.Follow">
+		select
+			fm.from_userid,
+			um.username as from_username,
+			fm.to_userid,
+			um2.username as to_username
+		from
+			follow_mst fm
+			left outer join user_mst um on(um.id = fm.from_userid)
+			left outer join user_mst um2 on(um2.id = fm.to_userid)
+		where
+			fm.from_userid = #{from_userid}
+		and fm.to_userid = #{to_userid};
+	</select>
+	
+	<select id="isFollowed" resultType="Integer" parameterType="com.springboot.placenote.domain.user.Follow">
+		SELECT	
+			COUNT(*)
+		FROM
+			follow_mst
+		WHERE
+			from_userid = #{from_userid}
+		AND 
+			to_userid = #{to_userid};
+	</select>
+		<select id="isFollowered" resultType="Integer" parameterType="com.springboot.placenote.domain.user.Follow">
+		SELECT	
+			COUNT(*)
+		FROM
+			follow_mst
+		WHERE
+			to_userid = #{from_userid}
+		AND 
+			from_userid = #{to_userid};
+	</select>
+	
+	<insert id="follow" parameterType="com.springboot.placenote.domain.user.Follow">
+		insert into
+			follow_mst
+		values(
+			#{from_userid},
+			#{to_userid}
+		);
+	</insert>
+	
+	<delete id="followCancel" parameterType="com.springboot.placenote.domain.user.Follow">
+		delete
+		from
+			follow_mst
+		where
+			from_userid = #{from_userid}
+		and to_userid = #{to_userid};
+	</delete>
+	<select id="getFollowing" parameterType="Integer" resultType="com.springboot.placenote.domain.user.Follow">
+		SELECT
+			fm.from_userid,
+			fm.to_userid,
+			um.username,
+			ud.profile_img
+		FROM
+			follow_mst fm
+   			left outer join user_mst um ON(fm.to_userid = um.id)
+   			left outer join user_dtl ud ON(fm.to_userid = ud.id)
+   		where
+   			fm.from_userid = #{from_userid};
+
+	</select>
+	<select id="getFollower" parameterType="Integer" resultType="com.springboot.placenote.domain.user.Follow">
+		SELECT
+			fm.from_userid,
+			fm.to_userid,
+			um.username,
+			ud.profile_img
+		FROM
+			follow_mst fm
+   			left outer join user_mst um ON(fm.from_userid = um.id)
+   			left outer join user_dtl ud ON(fm.from_userid = ud.id)
+   		where
+   			fm.to_userid = #{to_userid};
+	</select>
 	
 </mapper>

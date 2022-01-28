@@ -11,6 +11,7 @@ body{
     margin: 0;
 
 }
+
 nav{
     background-color: white;
 }
@@ -50,6 +51,7 @@ nav{
     background-color: #333333;
     color: white;
 }
+
 .menu-btn span{
     color: #00b49b;
 }
@@ -137,6 +139,14 @@ button{
     color: #2d8dee;
     background-color: #f3f9fe;
     border-radius: 5px;
-    
+    cursor: pointer;
+}
+
+.getfollowing-info {
+	display: block;
+}
+.getfollower-info{
+	display: block;
+	
 }
 

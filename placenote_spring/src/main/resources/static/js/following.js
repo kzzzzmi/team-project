@@ -3,27 +3,50 @@
  */
 const followBtn = document.querySelectorAll('.follow-btn');
 const profileEditBtn = document.querySelector('.profile-edit-btn');
-for (let i = 0; i < followBtn.length; i++) {
-	followBtn[i].onclick = () => {
-		if (followBtn[i].value == "팔로우") {
-			followBtn[i].value = "팔로우취소"
-		} else {
-			followBtn[i].value = "팔로우"
+const GetUserID = document.querySelector('.getuserid');
+
+function follow(){
+	var userId = GetUserID.value;
+	$.ajax({
+		type : 'post',
+		url: `/follow/${userId}`,
+		dataType : 'text',
+		success : function(data){
+			if(data == '1'){
+				profileEditBtn.textContent = '팔로우취소';	
+				
+				}
+		},
+		error:function(){
+			alert('로그인 후 가능합니다');
+		
+		}	
+	});
+	
+}
+function followCancel(){
+	var userId = GetUserID.value;
+	$.ajax({
+		type : 'delete',
+		url: `/follow/${userId}`,
+		dataType : 'text',
+		success : function(data){
+			if(data == '1'){
+				profileEditBtn.textContent = '팔로우';
+			}
+		},
+		error:function(){
+			alert('로그인 후 가능합니다.');
+			
 		}
-
-	}
+		
+	});
 }
-
 profileEditBtn.onclick = () => {
-	if (profileEditBtn.value == "팔로우") {
-		profileEditBtn.value = "팔로우취소"
-	} else {
-		profileEditBtn.value = "팔로우"
-	}
+    if (profileEditBtn.textContent == "팔로우") {
+       follow();
+    } else {
+        followCancel();
+    }
 
 }
-
-
-
-
-

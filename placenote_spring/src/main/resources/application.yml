@@ -42,19 +42,13 @@ spring:
              
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://121.175.150.249:3306/project_20220113_02?useUnicode=true
+    url: jdbc:mariadb://121.175.150.249:3306/project_20220113_02?useUnicode=true&allowMultQuries=true
     username: tp220113_02
     password: 1685
-    
-    
-   
 
-   
 mybatis:
   mapper-locations:
   - /mappers/*.xml
-
-
 
  
   

@@ -10,7 +10,7 @@ public interface AuthService {
     	
 	public boolean usernameCheck(String username);
 	public boolean insertAfterValidCheck(SignupReqDto signupReqDto, BindingResult bindingResult);
+	public int getUserId(String username);
 	
-
 	
 }

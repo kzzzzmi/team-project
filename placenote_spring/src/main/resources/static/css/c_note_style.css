@@ -1,0 +1,246 @@
+body{
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+button{
+    display: flex;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+select{
+    width: 100px;
+    border: 1px solid #999999;
+    padding: 1px;
+    border-radius: 2px;
+    color: #999999;
+}
+
+textarea{
+    border: 0;
+    outline: none;
+}
+.text-container{
+    display: flex;
+}
+
+.text-body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.text-body-header{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    height: 44px;
+    background-color: #fff;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.body-header-link-naver{
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.link-naver{
+    padding: 12px 2px 18px 25px;
+    margin-right: 2px;
+}
+
+.link-index{
+    display: flex;
+    width: 110px;
+    padding: 12px 0px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(12, 197, 164);
+}
+
+.body-header-save{
+    display: flex;
+    margin-right: 40px;
+    width: 70px;
+    align-items: center;
+}
+
+.body-header-save-btn{
+    border: 1px solid #999999;
+    color: #555555;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+    font-size: 12px;
+    width: 95%;
+    height: 37px;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-body-toolBox{
+    width: 100%;
+    height: 93px;
+    padding-top: 44px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 6%);
+}
+
+.body-toolBox-iconBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.body-iconBox{
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.iconBox-icon{
+    display: flex;
+    flex-direction: column;
+    width: 49px;
+    height: 62px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.iconBox-icon-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.iconBox-icon-img i{
+    font-size: 20px;
+    color: #999999;
+}
+
+.iconBox-icon-name{
+    margin-top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    color: #555555;
+}
+
+.body-fontBox{
+    display: flex;
+    width: 100%;
+}
+
+.fontBox-items{
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 6px;
+    display: flex;
+    justify-content: start;
+}
+
+.fontBox-items-left{
+    display: flex;
+    margin-left: 15px;
+}
+
+.text-body-main{
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+
+}
+
+.text-body-mainBox{
+    width: 100%;
+    max-width: 720px;
+    min-height: 600px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 4%), 0 0 1px 0 rgb(0 0 0 / 10%);
+}
+
+.mainBox-text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+}
+
+#text-title{
+    width: 100%;
+    max-width: 630px;
+    color: #626262;
+    display: flex;
+    border: none;
+    margin: 25px 0 ;
+    padding: 15px 0;
+    border-bottom: 1px solid rgb(150, 150, 150, 0.3);
+    font-size: 21px;
+    align-items: center;
+}
+
+#text-content {
+    font-size: 14px;
+}
+
+input:focus {outline:none;}
+
+#file {
+    display: none;
+}
+
+.file-boxs {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.file-box{
+    width: 720px;
+    background-color: rgb(181, 181, 181, 0.3);
+    
+}
+
+.upload-box{
+    padding-bottom: 2px;
+    margin-left:10px ;
+}
+
+.remove-btn{
+    margin-left: 5px;
+}
+
+.quote{
+    width: 100%;
+    display: flex;
+}
+
+.quote input {
+    width: 100%;
+    max-width: 560px;
+    min-height:100px ;
+    display: flex;
+    border: none;
+
+}
