@@ -16,54 +16,58 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class PageController {
 
-    private final ProfileService profileService;
+	private final ProfileService profileService;
 
-    
-    @GetMapping("/index")
-    public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-	return "index";
-    }
+	@GetMapping("/index")
+	public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		return "index";
+	}
 
-    @GetMapping("/auth/signin")
-    public String signinPage() {
-	return "/auth/signin";
-    }
+	@GetMapping("/auth/signin")
+	public String signinPage() {
+		return "/auth/signin";
+	}
 
-    @GetMapping("/auth/signup")
-    public String signupPage() {
-	return "/auth/signup";
-    }
+	@GetMapping("/auth/signup")
+	public String signupPage() {
+		return "/auth/signup";
+	}
 
-    @GetMapping("/my/{username}/follower")
-    public String follower(Model model , @PathVariable String username) {
-	model.addAttribute("username" , username);
-	return "/follow/follower";
+	@GetMapping("/my/{username}/follower")
+	public String follower(Model model, @PathVariable String username) {
+		model.addAttribute("username", username);
+		return "/follow/follower";
 	}
 
 	@GetMapping("/my/{username}/following")
-    public String following(@PathVariable String username , Model model) {
-	model.addAttribute("username" , username);
-	return "/follow/following";
-    }
-
-    @GetMapping("/my/{username}")
-    public String profileForm(Model model, @PathVariable String username,
-	    @AuthenticationPrincipal PrincipalDetails principalDetails) {
-	ProfileRespDto profileRespDto = null;
-	System.out.println(username);
-	if (principalDetails != null && principalDetails.getUser().getUsername().equals(username)) {
-	    profileRespDto = new ProfileRespDto();
-	    profileRespDto.setUsername(principalDetails.getUser().getUsername());
-	    profileRespDto.setProfile_img(principalDetails.getUserDtl().getProfile_img());
-
-	    model.addAttribute("profileRespDto", profileRespDto);
-	    return "/feed/my-feed";
-
-	} else {
-	    profileRespDto = profileService.getProfile(principalDetails, username);
-	    model.addAttribute("profileRespDto", profileRespDto);
-	    return "/feed/other_feed";
-
+	public String following(@PathVariable String username, Model model) {
+		model.addAttribute("username", username);
+		return "/follow/following";
 	}
-    }
+
+	@GetMapping("/my/{username}")
+	public String profileForm(Model model, @PathVariable String username,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		ProfileRespDto profileRespDto = null;
+		System.out.println(username);
+		if (principalDetails != null && principalDetails.getUser().getUsername().equals(username)) {
+			profileRespDto = new ProfileRespDto();
+			profileRespDto.setUsername(principalDetails.getUser().getUsername());
+			profileRespDto.setProfile_img(principalDetails.getUserDtl().getProfile_img());
+
+			model.addAttribute("profileRespDto", profileRespDto);
+			return "/feed/my-feed";
+
+		} else {
+			profileRespDto = profileService.getProfile(principalDetails, username);
+			model.addAttribute("profileRespDto", profileRespDto);
+			return "/feed/other_feed";
+
+		}
+	}
+	
+	@GetMapping("/upload")
+	public String update() {
+		return "/upload/upload";
+	}
 }

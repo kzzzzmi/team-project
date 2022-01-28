@@ -20,7 +20,7 @@
 				<div class="body-header-link-naver">
 					<a href="https://www.naver.com/" class="link-naver"> <img
 						src="/images/naver-logo.png" width="20px" height="20px" />
-					</a> <a href="https://m.place.naver.com/" class="link-index">MY플레이스</a>
+					</a> <a href="/" class="link-index">MY플레이스</a>
 				</div>
 				<div class="body-header-save">
 					<button type="button" class="body-header-save-btn">게시</button>
