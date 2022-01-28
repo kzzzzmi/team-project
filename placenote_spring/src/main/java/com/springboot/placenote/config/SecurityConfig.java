@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.springboot.placenote.config.auth.PrincipalDetails;
 import com.springboot.placenote.config.oauth2.PrincipalOAuth2UserService;
 
 import lombok.RequiredArgsConstructor;

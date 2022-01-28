@@ -1,5 +1,6 @@
 package com.springboot.placenote.config.auth;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -8,10 +9,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import com.springboot.placenote.domain.follow.Follow;
 import com.springboot.placenote.domain.user.User;
 import com.springboot.placenote.domain.user.UserDtl;
 
 import lombok.Data;
+
 
 @Data
 public class PrincipalDetails implements UserDetails , OAuth2User {
@@ -32,6 +35,7 @@ public class PrincipalDetails implements UserDetails , OAuth2User {
 		this.userDtl = userDtl;
 		this.attributes = attributes;
 	}
+
 	
 	
 	@Override

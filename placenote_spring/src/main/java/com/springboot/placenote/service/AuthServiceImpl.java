@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class AuthServiceImpl implements AuthService {
     
+    	
     	@Autowired
 	private final UserRepository userRepository;
 	
@@ -41,7 +42,12 @@ public class AuthServiceImpl implements AuthService {
 		return false;
 	}
 
-	
+	@Override
+	public int getUserId(String username) {
+	    User userEntity = userRepository.getUserByUsername(username);
+	    return userEntity.getId();
+	}
+
 
 
 }

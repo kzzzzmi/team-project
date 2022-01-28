@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
-   
+   	margin : 0; 
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
@@ -18,7 +18,12 @@ a {
 ul {
     list-style: none;
 }
-
+body{
+  background: #f9f9f9;
+}
+.header{
+  background: white;
+}
 .text-body{
     display: flex;
     
@@ -87,7 +92,7 @@ ul {
    display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    padding-top: 20px;
+    padding-top: 40px;
     align-items: center;
 
 }
@@ -121,14 +126,26 @@ ul {
     justify-content: space-evenly;
 }
 .profile-info-top button{
-    width:70px;
-   margin-left : 0;
-    border: none;
+     margin-left: 20px;
+    padding: 5px 9px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    width: 94px;
+    height: 30px;
+    background-color: #e5f8fb;
+    font-weight: 500;
+    cursor: pointer;
+    color: #2d8dee;
 }
 
 .profile-username {
+  display: flex;
+  justify-content: center;
+  width: 180px;
     font-size: 1.5em;
     font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .profile-edit-btn {
@@ -149,6 +166,7 @@ ul {
     flex-direction: row;
     align-items: center;
     text-align: center;
+    
    
 }
 .profile-info-middle button{
@@ -175,12 +193,14 @@ ul {
 .profile-info-bottom pre{
     font-size: 1.2em;
 }
-
+.board-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .container {
-  display: flex;
-  justify-content: center;
-  background-color: #f9f9f9;
+  width: 684px;
 }
 
 .board-box {
@@ -284,87 +304,70 @@ ul {
   width: 70px;
 
 }
-.board-list-group{
-    display: flex;
-    margin-top: 10px;
-}
 .board-list{
     margin-top: 0;
     background-color: white;
 }
 .board-list-item {
-  width: 720px;
+  width: 684px;
   background-color: white;
-  
+  padding: 20px 20px 0 20px;
 }
 
 .board-list-item-box{
-    
+    border: 1px solid #dbdbdb;
+    border-radius: 11px;
     box-shadow: 0 2px 3px 0 rgba(41, 41, 41, 0.1);
-  
+    padding : 22px 20px;
 
     
 }
+.board-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 
-.board-title{
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-    padding: 4px;
-    box-sizing: border-box;
-}
-.bard-img-btn-box{
-    position: relative;
-}
-.board-img-btn-box button{
-    border: none;
-    width: 220px;
-    height: 220px;
-}
-.board-img-btn{
-    display: block;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    border-radius: 7px;
+.board-profile-btn {
     text-align: left;
-}
-.board-img{
+    outline: none;
+    border: 0;
+    background-color: #ffffff;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-.board-text-box{
-    position: absolute;
-    right: 15px;
-    bottom: 13px;
-    left: 15px;
-    color: #fff;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
 }
 .board-text{
-    font-size: 1rem;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
 }
-.board-place-name{
-        display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: -0.4px;
+.board-profile-username {
+  font-size: 20px;
+  font-weight: 500;
 }
-.like-btn{
-    position: absolute;
-    top: 4%;
-    right: 4%;
-    
-}
-.like-btn i{
-    font-size: 36px;
-    color: white;
-    
 
+.board-place{
+  font-size: 14px;
+  color: #706f6f;
+  margin-left: 10px;
+  
+  
+}
+.board-img-content button{
+    width: 74px;
+    height: 74px;
+    border: none;
+    border-radius: 5px;
+}
+.board-img-content img{
+   width: 100%;
+   border-radius: 5px;
+}
+.board-item-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: #706f6f;
 }
 footer{
 	padding-top: 20px;
@@ -396,6 +399,3 @@ footer{
     padding-left: 10px;
     border-left: 1px solid #c2cbce;
 }
-
-
-

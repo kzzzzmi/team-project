@@ -7,33 +7,63 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
+import com.springboot.placenote.service.ProfileService;
+import com.springboot.placenote.web.dto.auth.ProfileRespDto;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class PageController {
 
-	@GetMapping({ "/", "/index" })
-	public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		return "index";
+    private final ProfileService profileService;
+
+    
+    @GetMapping("/index")
+    public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+	return "index";
+    }
+
+    @GetMapping("/auth/signin")
+    public String signinPage() {
+	return "/auth/signin";
+    }
+
+    @GetMapping("/auth/signup")
+    public String signupPage() {
+	return "/auth/signup";
+    }
+
+    @GetMapping("/my/{username}/follower")
+    public String follower(Model model , @PathVariable String username) {
+	model.addAttribute("username" , username);
+	return "/follow/follower";
 	}
 
-	@GetMapping("/auth/signin")
-	public String signinPage() {
-		return "/auth/signin";
-	}
+	@GetMapping("/my/{username}/following")
+    public String following(@PathVariable String username , Model model) {
+	model.addAttribute("username" , username);
+	return "/follow/following";
+    }
 
-	@GetMapping("/auth/signup")
-	public String signupPage() {
-		return "/auth/signup";
-	}
+    @GetMapping("/my/{username}")
+    public String profileForm(Model model, @PathVariable String username,
+	    @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	ProfileRespDto profileRespDto = null;
+	System.out.println(username);
+	if (principalDetails != null && principalDetails.getUser().getUsername().equals(username)) {
+	    profileRespDto = new ProfileRespDto();
+	    profileRespDto.setUsername(principalDetails.getUser().getUsername());
+	    profileRespDto.setProfile_img(principalDetails.getUserDtl().getProfile_img());
 
-	@GetMapping("/upload")
-	public String uploadPage() {
-		return "/upload/upload";
-	}
+	    model.addAttribute("profileRespDto", profileRespDto);
+	    return "/feed/my-feed";
 
-	@GetMapping("/insert")
-	public String insertProduct() {
-		return "/product/product";
+	} else {
+	    profileRespDto = profileService.getProfile(principalDetails, username);
+	    model.addAttribute("profileRespDto", profileRespDto);
+	    return "/feed/other_feed";
+
 	}
-	
+    }
 }
