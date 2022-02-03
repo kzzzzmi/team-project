@@ -29,7 +29,7 @@
                     <div class="body-header-link-naver">
                         <a href="https://www.naver.com/" class="link-naver"> <img src="/images/naver-logo.png"
                                 width="20px" height="20px"></a> 
-                        <a href="/index" class="link-index">MY플레이스</a>
+                        <a href="/" class="link-index">MY플레이스</a>
                     </div>
                     <div class="body-header-save">
                         <button class="body-header-save-btn">
@@ -46,7 +46,7 @@
             <div class="header">
                 <header class="profile-header">
                     <div class="profile-img">
-                        <img src="/images/${principal.userDtl.profile_img}">
+                        <img src="/image/${principal.userDtl.profile_img}">
                     </div>
                     <div class="profile-info">
                         <div class="profile-info-top">
@@ -70,14 +70,14 @@
                                 onclick="location.href = '/my/${principal.username}/following'">
                                 팔로잉
                                 <div>
-                                    <button>0</button>
+                                    <button>${profileRespDto.followingCount }</button>
                                 </div>
                             </div>
                             <div class="profile-info-middle-item cursor-pointer"
                                 onclick="location.href = '/my/${principal.username}/follower'">
                                 팔로워
                                 <div>
-                                    <button>0</button>
+                                    <button>${profileRespDto.followerCount }</button>
                                 </div>
                             </div>
                         </div>
@@ -95,12 +95,12 @@
                     <div class="main-category-left">
                         <div class="main-category-btnbox">
                             <button class="main-category-btns">
-                                <i class="fas fa-bars"  onclick="location.href= '/my/${principal.user.username}/feed'"></i> 전체
+                                <i class="fas fa-bars"  onclick="location.href= '/my/${principal.user.username}'"></i> 전체
                             </button>
                         </div>
                         <div class="main-category-btnbox">
                             <button class="main-category-btns"
-                                onclick="location.href= '/feed/${principal.user.username}/image'">
+                                onclick="location.href= '/my/${principal.user.username}/image'">
                                 <i class="fas fa-images"></i> 사진
                             </button>
                         </div>
@@ -156,7 +156,7 @@
         </ul>
         <footer>
             <div class="footer-logo">
-                <a href="#"> <img src="images/naverfooter_logo.png" alt="">
+                <a href="#"> <img src="/images/naverfooter_logo.png" alt="">
                 </a> <a href="#"> <span>회원정보 고객센터</span>
                 </a> <a href=""> <span>공지사항</span>
                 </a>
@@ -165,8 +165,6 @@
     </section>
     <input type="hidden" value="${profileRespDto.userid}" class="getuserid">
 
-
-    <script src="/js/header.js"></script>
 </body>
 
 </html>

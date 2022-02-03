@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="back-page-btn">
 				<button type="button" style="border: none; background-color: white;"
-				onclick="history.go(-1)">
+				onclick="location.href='/my/${username}'">
 					<i class="fas fa-arrow-left"></i>
 				</button>
 				<span>${username}</span>
@@ -40,10 +40,10 @@
 		<div class="menu">
 			<div class="menu-btn">
 				<button onclick="location.href='/my/${username}/following'">
-					팔로잉 <span class="following-total-count">0</span>
+					팔로잉 <span class="following-total-count"></span>
 				</button>
 				<button onclick="location.href= '/my/${username}/follower'" style="background-color: #333333 ; color: white;">
-					팔로워 <span class="follower-total-count">0</span>
+					팔로워 <span class="follower-total-count"></span>
 				</button>
 			</div>
 		</div>

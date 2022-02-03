@@ -4,6 +4,7 @@
 const username = document.querySelector('.getUsername').value;
 const getfollowingInfo = document.querySelector('.getfollowing-info');
 const followingTotalCount = document.querySelector('.following-total-count');
+const followerTotalCount = document.querySelector('.follower-total-count');
 var followBtn = document.querySelectorAll('.follow-btn');
 var userId = document.querySelectorAll('.to-userid');
 
@@ -11,6 +12,25 @@ var followItem = ``;
 var followingCount = 0;
 
 getFollowingLoad();
+
+function getFollowCount() {
+	$.ajax({
+		type: 'get',
+		url: "/follow/count",
+		data: {
+			"username": username
+		},
+		dataType: 'text',
+		success: function(data) {
+			let followObj = JSON.parse(data);
+			followingTotalCount.textContent = followObj.followingCount;
+			followerTotalCount.textContent = followObj.followerCount;
+		},
+		error: function() {
+			alert('비동기 처리 오류');
+		}
+	})
+}
 
 function getFollowingLoad() {
 	$.ajax({
@@ -22,10 +42,13 @@ function getFollowingLoad() {
 		dataType: 'text',
 		success: function(data) {
 			let followListObj = JSON.parse(data);
+
 			followItem += getFollow(followListObj.followList);
 			getfollowingInfo.innerHTML = followItem;
 			followingTotalCount.textContent = followingCount;
+			followerTotalCount.textContent = followListObj.followerCount;
 			let loginCheck = followListObj.loginCheck;
+
 			userId = document.querySelectorAll('.to-userid');
 			followBtn = document.querySelectorAll('.follow-btn');
 			followBtnClick(loginCheck);
@@ -41,13 +64,13 @@ function getFollowingLoad() {
 function getFollow(followList) {
 	let followHtml = ``;
 	followingCount = followList.length;
-	
+
 	for (let i = 0; i < followList.length; i++) {
 		followButton = followList[i].follow == 'i' ? "" : `<input class="follow-btn" type="button" value="${followList[i].follow}">`;
 		followHtml += `
 			<li class="following-btn-box">
                 <button type="button" class="following-img-btn" onclick="location.href='/my/${followList[i].username}'">
-                    <img src="/images/${followList[i].profile_img}">
+                    <img src="/image/${followList[i].profile_img}">
                 </button>
                 <div class="following-name-btn-box">
                     <button type="button" class="following-name-btn" onclick="location.href='/my/${followList[i].username}'">
@@ -70,7 +93,7 @@ function follow(userId, i) {
 		success: function(data) {
 			if (data == '1') {
 				followBtn[i].value = '팔로우취소';
-
+				getFollowCount();
 			}
 		},
 		error: function() {
@@ -88,6 +111,7 @@ function followCancel(userId, i) {
 		success: function(data) {
 			if (data == '1') {
 				followBtn[i].value = '팔로우';
+				getFollowCount();
 			}
 		},
 		error: function() {

@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class BoardReqDto {
 	private List<MultipartFile> files;
+	private String location;
 	private String keyword;
 	private String placeName;
 	private String boardContent;
@@ -22,6 +23,7 @@ public class BoardReqDto {
 				.place_name(placeName)
 				.board_content(boardContent)
 				.file_name(boardImg)
+				.location(location)
 				.build();
 	}
 }

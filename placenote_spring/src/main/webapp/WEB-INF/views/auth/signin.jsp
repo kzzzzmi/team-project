@@ -29,22 +29,24 @@
 				<div class="Keyboard">
 					<button>
 						PC 키보드 보기<i class="fas fa-chevron-down"></i>
-						</button>
+					</button>
 				</div>
-				
-				
+
+
 				<form action="/auth/signin" method="post">
 					<div class="login-input-wrap">
 						<div class="login-input-icon">
 							<i class="far fa-user"></i>
 						</div>
-						<input type="text" name="username"  placeholder="아이디" required="required"></input>
+						<input type="text" name="username" placeholder="아이디"
+							required="required"></input>
 					</div>
 					<div class="login-input-wrap password-wrap">
 						<div class="login-input-icon">
 							<i class="fas fa-unlock"></i>
-						</div>	
-						<input type="password" name="password"  placeholder="비밀번호" required="required"></input>
+						</div>
+						<input type="password" name="password" placeholder="비밀번호"
+							required="required"></input>
 					</div>
 					<div class="login-button-wrap">
 						<button type="submit">로그인</button>
@@ -60,12 +62,11 @@
 					<li><button>
 							<i class="fab fa-instagram" style="color: rgb(238, 40, 139);"></i><span>Instagram</span>
 						</button></li>
-					<li>
-					<a href="/oauth2/authorization/naver" class="si-google">
-					<button>
-							<i class="fab fa-google"></i><span>naver</span>
-							
-						</button></a></li>
+					<li><a href="/oauth2/authorization/naver" class="si-google">
+							<button>
+								<i class="fab fa-google"></i><span>naver</span>
+							</button>
+					</a></li>
 
 				</ul>
 				<div class="forget-box">
@@ -91,7 +92,7 @@
 		</div>
 	</div>
 	<script src="https://kit.fontawesome.com/51db22a717.js"
-	crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

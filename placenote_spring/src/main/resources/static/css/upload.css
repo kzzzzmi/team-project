@@ -243,3 +243,7 @@ input:focus {
   display: flex;
   border: none;
 }
+
+#address {
+	display: none;
+}

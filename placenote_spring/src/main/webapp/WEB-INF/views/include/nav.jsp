@@ -52,14 +52,13 @@
 				<div class="profile-info-title-box">
 					<div class="profile-info-title">
 						<div class="profile-img-box">
-							<img src="/image/profile_img/${principal.userDtl.profile_img}">
+							<img src="/image/	${principal.userDtl.profile_img}">
 						</div>
 						<div class="profile-info-top">
 							<h1 style="cursor: pointer"
 								onclick="location.href = '/my/${principal.getUsername()}'">
 								${principal.getUsername()}</h1>
 						</div>
-
 					</div>
 				</div>
 				<div class="profile-info-middle">
@@ -78,13 +77,13 @@
 						<div class="profile-info-middle-item cursor-pointer" onclick="location.href = '/my/${principal.getUsername()}/following'">
 							팔로잉
 							<div>
-								<button>230</button>
+								<button>${profileRespDto.followingCount }</button>
 							</div>
 						</div>
 					<div class="profile-info-middle-item cursor-pointer" onclick="location.href = '/my/${principal.getUsername()}/follower'">
 						팔로워
 						<div>
-							<button>100</button>
+							<button>${profileRespDto.followerCount }</button>
 						</div>
 					</div>
 				</div>
@@ -109,6 +108,7 @@
 			</ul>
 		</div>
 	</header>
+	<script src="/js/nav.js"></script>
 </body>
 
 </html>

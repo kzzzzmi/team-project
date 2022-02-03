@@ -11,4 +11,6 @@ public class FollowRespDto {
 
    private List<Follow> followList;
    private boolean loginCheck;
+   private int followingCount;
+   private int followerCount;
 }

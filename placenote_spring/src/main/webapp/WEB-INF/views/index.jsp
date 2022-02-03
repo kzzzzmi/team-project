@@ -49,25 +49,27 @@
 
 			<div class="sub-category">
 				<div>
-					<button>한식</button>
+					<button class="sub-category-item select-sub-category">전체</button>
 				</div>
 				<div>
-					<button>중식</button>
+					<button class="sub-category-item">한식</button>
 				</div>
 				<div>
-					<button>일식</button>
+					<button class="sub-category-item">중식</button>
 				</div>
 				<div>
-					<button>양식</button>
+					<button class="sub-category-item">일식</button>
 				</div>
 				<div>
-					<button>카페</button>
+					<button class="sub-category-item">양식</button>
+				</div>
+				<div>
+					<button class="sub-category-item">카페</button>
 				</div>
 			</div>
 
-			<ul class="board-list">
-				
-			</ul>
+			<ul class="board-list"></ul>
+
 		</div>
 		<div class="modal-container2">
 			<i id="close-btn" class="fas fa-times"></i>

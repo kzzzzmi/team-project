@@ -85,5 +85,25 @@ public class BoardServiceImpl implements BoardService {
 		boardRespDto.setBoardList(boardList);
 		return boardRespDto;
 	}
-	
+
+	@Override
+	public BoardRespDto getBoard(String subCategory, int page) {
+		BoardRespDto boardRespDto = new BoardRespDto();
+		List<IndexBoard> boardListAll = boardRepository.getBoard(subCategory);
+		List<IndexBoard> boardList = new ArrayList<>();
+		
+		int start = page * 5;
+		int end = start + 5;
+		
+		while(start < end && start < boardListAll.size()) {
+			IndexBoard board = boardListAll.get(start);
+			String formatDate = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(board.getUpdate_date());
+			board.setUpdate(formatDate);
+			boardList.add(board);
+			start++;
+		}
+			
+		boardRespDto.setBoardList(boardList);
+		return boardRespDto;
+	}
 }

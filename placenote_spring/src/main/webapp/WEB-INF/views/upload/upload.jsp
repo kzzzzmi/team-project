@@ -69,6 +69,7 @@
 									<option value="카페">카페</option>
 								</select>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -85,9 +86,13 @@
 				</div>
 				<input type="file" class="file" name="files" multiple="multiple"
 					accept=".png, .jpeg, .jpg" />
+					<input type="text" id="address" name="location">
 			</form>
 		</div>
 	</div>
 	<script src="/js/upload.js"></script>
+	<script src="/js/city.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>

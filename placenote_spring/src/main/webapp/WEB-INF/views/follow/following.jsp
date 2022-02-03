@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="back-page-btn">
 				<button type="button" style="border: none; background-color: white;"
-					onclick="history.go(-1)">
+					onclick="location.href='/my/${username}'">
 					<i class="fas fa-arrow-left"></i>
 				</button>
 				<span>${username}</span>

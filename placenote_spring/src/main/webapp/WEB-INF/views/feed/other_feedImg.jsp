@@ -46,7 +46,7 @@
 			<div class="header">
 				<header class="profile-header">
 					<div class="profile-img">
-						<img src="/images/${profileRespDto.profile_img}">
+						<img src="/image/${profileRespDto.profile_img}">
 					</div>
 					<div class="profile-info">
 						<div class="profile-info-top">
@@ -78,14 +78,14 @@
 								onclick="location.href = '/my/${profileRespDto.username}/following'">
 								팔로잉
 								<div>
-									<button>0</button>
+									<button>${profileRespDto.followingCount }</button>
 								</div>
 							</div>
 							<div class="profile-info-middle-item cursor-pointer"
 								onclick="location.href = '/my/${profileRespDto.username}/follower'">
 								팔로워
 								<div>
-									<button>0</button>
+									<button>${profileRespDto.followerCount }</button>
 								</div>
 							</div>
 						</div>
@@ -104,7 +104,7 @@
                                 </button>
                             </div>
                             <div class="main-category-btnbox">
-                                <button class="main-category-btns" onclick="location.href= '/feed/${profileRespDto.username}/image'">
+                                <button class="main-category-btns" onclick="location.href= '/my/${profileRespDto.username}/image'">
                                     <i class="fas fa-images"> 사진</i>
                                 </button>
                             </div>

@@ -5,8 +5,18 @@ const textContent = document.querySelector('#text-content');
 const form = document.querySelector('form');
 const textTitle = document.querySelector('#text-title');
 const fileBoxes = document.querySelector('.file-boxes');
+let address = document.querySelector('#address');
 
 var file_box = [];
+
+iconBoxIcon[1].onclick = () => {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			address.value = data.address;
+			alert(address.value);
+		}
+	}).open({ popupTitle: '주소 검색' });
+}
 
 file.onchange = (event) => {
 	file_box = [];
@@ -59,6 +69,8 @@ uploadBtn.onclick = () => {
 		alert('가게 이름을 입력해주세요.');
 	} else if (isEmpty(textContent.value)) {
 		alert('내용을 입력해주세요.');
+	} else if(isEmpty(address.value)) {
+		alert('장소를 선택해주세요.')
 	}
 	else {
 		uploadSubmit();

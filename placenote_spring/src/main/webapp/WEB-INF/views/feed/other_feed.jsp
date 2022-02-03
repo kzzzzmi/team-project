@@ -28,7 +28,7 @@
 					<div class="body-header-link-naver">
 						<a href="https://www.naver.com/" class="link-naver"> <img
 							src="/images/naver-logo.png" width="20px" height="20px">
-						</a> <a href="https://m.place.naver.com/" class="link-index">MY플레이스</a>
+						</a> <a href="/" class="link-index">MY플레이스</a>
 					</div>
 					<div class="body-header-save">
 						<button class="body-header-save-btn">
@@ -45,14 +45,14 @@
 			<div class="header">
 				<header class="profile-header">
 					<div class="profile-img">
-						<img src="/images/${profileRespDto.profile_img}">
+						<img src="/image/${profileRespDto.profile_img}">
 					</div>
 					<div class="profile-info">
 						<div class="profile-info-top">
 							<h1 class="profile-username">${profileRespDto.username}</h1>
 							<c:choose>
 								<c:when test="${empty principal.user}">
-									<button type="button" class="profile-edit-btn" value="팔로우">팔로우</button>
+									<button type="button" class="profile-edit-btn" value="팔로우" onclick="loaction.href='/auth/signin'">팔로우</button>
 								</c:when>
 								<c:otherwise>
 									<button type="button" class="profile-edit-btn">${profileRespDto.follow}</button>
@@ -77,14 +77,14 @@
 								onclick="location.href = '/my/${profileRespDto.username}/following'">
 								팔로잉
 								<div>
-									<button>0</button>
+									<button>${profileRespDto.followingCount }</button>
 								</div>
 							</div>
 							<div class="profile-info-middle-item cursor-pointer"
 								onclick="location.href = '/my/${profileRespDto.username}/follower'">
 								팔로워
 								<div>
-									<button>0</button>
+									<button>${profileRespDto.followerCount }</button>
 								</div>
 							</div>
 						</div>
@@ -106,7 +106,7 @@
 						</div>
 						<div class="main-category-btnbox">
 							<button class="main-category-btns"
-								onclick="location.href= '/feed/${profileRespDto.username}/image'">
+								onclick="location.href= '/my/${profileRespDto.username}/image'">
 								<i class="fas fa-images">사진</i> 
 							</button>
 						</div>

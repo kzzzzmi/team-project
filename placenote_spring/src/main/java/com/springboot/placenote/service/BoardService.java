@@ -8,4 +8,5 @@ public interface BoardService {
 
 	public boolean insertBoard(BoardReqDto boardReqDto, PrincipalDetails principalDetails);
 	public BoardRespDto getBoardAll(int page);
+	public BoardRespDto getBoard(String subCategory, int page);
 }

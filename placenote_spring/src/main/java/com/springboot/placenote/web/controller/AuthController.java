@@ -21,31 +21,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class AuthController {
- 
+
 	private final AuthService authService;
 	private final CertifiedService certifiedService;
-	
+
 	@GetMapping("/auth/username-check")
 	public boolean usernameCheck(@RequestParam String username) {
 		return authService.usernameCheck(username);
 	}
-	
+
 	@PostMapping("/auth/signup")
-	public boolean signup(@Valid SignupReqDto signupReqDto, HttpServletRequest request ,BindingResult bindingResult) throws ServletException {
+	public boolean signup(@Valid SignupReqDto signupReqDto, HttpServletRequest request, BindingResult bindingResult)
+			throws ServletException {
 		return authService.insertAfterValidCheck(signupReqDto, bindingResult);
 	}
 
 	@GetMapping("/auth/sendSMS")
 	public String sendSMS(String phoneNumber) {
 		Random random = new Random();
-		
+
 		String numStr = "";
-		for(int i = 0; i < 6; i++) {
+		for (int i = 0; i < 6; i++) {
 			String ran = Integer.toString(random.nextInt(10));
 			numStr += ran;
 		}
 		certifiedService.certifiedPhoneNumber(phoneNumber, numStr);
 		return numStr;
 	}
-	
+
 }

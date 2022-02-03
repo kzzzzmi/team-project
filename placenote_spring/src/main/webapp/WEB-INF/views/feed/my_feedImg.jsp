@@ -44,7 +44,7 @@
 					<div class="header">
 						<header class="profile-header">
 							<div class="profile-img">
-								<img src="/images/${principal.userDtl.profile_img}">
+								<img src="/image/${principal.userDtl.getProfile_img()}">
 							</div>
 							<div class="profile-info">
 								<div class="profile-info-top">
@@ -97,7 +97,7 @@
 									</button>
 								</div>
 								<div class="main-category-btnbox">
-									<button class="main-category-btns">
+									<button class="main-category-btns" onclick="location.href= '/my/${profileRespDto.username}/image'">
 										<i class="fas fa-images"></i> 사진
 									</button>
 								</div>
@@ -278,9 +278,7 @@
 			</section>
 			<input type="hidden" value="${profileRespDto.userid}" class="getuserid">
 
-			<script src="/js/header.js"></script>
 			<script src="/js/following.js"></script>
-
 		</body>
 
 		</html>
