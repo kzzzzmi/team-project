@@ -1,56 +1,61 @@
 const body = document.querySelector('body');
 const modalContainer = document.querySelector('.modal-container');
-const modalContainer2 = document.querySelector('.modal-container2');
-const settingBtn = document.querySelector('#setting-btn');
-const boardItemImg = document.querySelectorAll('.board-item-img');
+var boardItemImg = document.querySelectorAll('.board-item-img');
 const closeBtn = document.querySelector('#close-btn');
 const boardList = document.querySelector('.board-list');
 const subCategoryItem = document.querySelectorAll('.sub-category-item');
-let boardFollowBtn = document.querySelectorAll('.board-follow-btn');
-let selectSubCategory = document.querySelector('.select-sub-category');
+const boardModalImgPreview = document.querySelector('.board-modal-img-preview');
+const boardModalUsername = document.querySelector('.board-modal-username');
+const boardModalProfileImg = document.querySelector('.board-modal-profile-img');
+var boardListItem = document.querySelectorAll('.board-list-item');
+var boardFollowBtn = document.querySelectorAll('.board-follow-btn');
+var selectSubCategory = document.querySelector('.select-sub-category');
+var boardImg = document.querySelector('.board-img');
 
+var boardUserId = [];
+
+var boardImages = [];
+var boardImagesStartIndex = [];
+var currentBoardNum = [];
+var moreBoardNum = [];
+
+var prevImg = document.querySelectorAll('.prevImg');
+var nextImg = document.querySelectorAll('.nextImg');
+
+const myUsername = document.querySelector('.profile-info-top h1').textContent;
 var page = 0;
 var boardTotal = 0;
 var boardListItems = ``;
+var imagesIndex = 0;
+var currentNum = 0;
 
 window.onscroll = () => {
 	let checkNum = $(document).height() - $(window).height() - $(window).scrollTop();
 
 	if (checkNum < 1 && checkNum > -1 && boardTotal >= (page + 1) * 5) {
 		page++;
-		boardLoadAll();
+		boardLoad(selectSubCategory.textContent);
 	}
 }
 
-boardLoadAll();
+boardLoad(selectSubCategory.textContent);
 
-for(let i = 0; i < subCategoryItem.length; i++) {
+for (let i = 0; i < subCategoryItem.length; i++) {
 	subCategoryItem[i].onclick = () => {
-		if(!subCategoryItem[i].classList.contains('select-sub-category')) {
-			selectSubCategory.classList.remove('select-sub-category');
+		if (!subCategoryItem[i].classList.contains('select-sub-category')) {
+			selectSubCategory.classList.toggle('select-sub-category');
 			subCategoryItem[i].classList.add('select-sub-category');
 			selectSubCategory = document.querySelector('.select-sub-category');
-			
-			boardLoad(selectSubCategory.textContent);
-		} else if(subCategoryItem[i].textContent == )
+			initBoard();
+			boardLoad(subCategoryItem[i].textContent);
+		}
 	}
 }
 
-function boardLoadAll() {
-	$.ajax({
-		type: "GET",
-		url: `/getBoardAll?page=${page}`,
-		dataType: "text",
-		success: function(data) {
-			let boardItems = JSON.parse(data);
-			boardTotal += boardItems.length;
-			boardListItems += getBoardListItems(boardItems);
-			boardList.innerHTML = boardListItems;
-		},
-		error: function() {
-			alert("비동기 처리 오류");
-		}
-	})
+function initBoard() {
+	page = 0;
+	boardTotal = 0;
+	boardListItems = ``;
 }
 
 function boardLoad(subCategory) {
@@ -59,11 +64,12 @@ function boardLoad(subCategory) {
 		url: `/getBoard/${subCategory}?page=${page}`,
 		dataType: "text",
 		success: function(data) {
-			boardListItems = "";
 			let boardItems = JSON.parse(data);
 			boardTotal += boardItems.length;
 			boardListItems += getBoardListItems(boardItems);
 			boardList.innerHTML = boardListItems;
+			initImg();
+			initFollow();
 		},
 		error: function() {
 			alert("비동기 처리 오류");
@@ -71,9 +77,28 @@ function boardLoad(subCategory) {
 	})
 }
 
+function moveImg(prevImg, nextImg) {
+	for (let i = 0; i < prevImg.length; i++) {
+		prevImg[i].onclick = () => {
+			let boardNumber = moreBoardNum[i];
+			if (currentBoardNum[boardNumber] > boardImagesStartIndex[boardNumber]) {
+				boardImg[boardNumber].src = `/image/${boardImages[--currentBoardNum[boardNumber]]}`;
+			}
+		}
+	}
+
+	for (let i = 0; i < nextImg.length; i++) {
+		nextImg[i].onclick = () => {
+			let boardNumber = moreBoardNum[i];
+			if (currentBoardNum[boardNumber] < boardImagesStartIndex[boardNumber + 1] - 1) {
+				boardImg[boardNumber].src = `/image/${boardImages[++currentBoardNum[boardNumber]]}`;
+			}
+		}
+	}
+}
+
 function getBoardListItems(boardItems) {
 	let boardItemsHtml = ``;
-
 	for (let boardItem of boardItems) {
 		boardItemsHtml += getBoardItem(boardItem);
 	}
@@ -81,6 +106,32 @@ function getBoardListItems(boardItems) {
 }
 
 function getBoardItem(boardItem) {
+	boardImagesStartIndex.push(imagesIndex);
+	currentBoardNum.push(imagesIndex);
+	boardUserId.push(boardItem.user_id);
+
+	let imgHtml = ``;
+
+	if (boardItem.file_name.length > 1) {
+		moreBoardNum.push(boardImagesStartIndex.length - 1);
+	}
+
+	for (let i = 0; i < boardItem.file_name.length; i++) {
+		boardImages[imagesIndex++] = boardItem.file_name[i];
+	}
+
+	if (boardItem.file_name.length == 1) {
+		imgHtml = `<img src="/image/${boardImages[boardImagesStartIndex[currentNum++]]}" class='board-img' />`;
+	} else {
+		imgHtml = `<i class="fas fa-chevron-left prevImg"></i>
+						<img src="/image/${boardImages[boardImagesStartIndex[currentNum++]]}" class='board-img' />
+						<i class="fas fa-chevron-right nextImg"></i>`;
+	}
+
+	let followCheck = `<button class="board-follow-btn" style="display: none"><i class="fas fa-check"></i></button>`;
+	if (boardItem.writer != myUsername) {
+		followCheck = boardItem.follow == '팔로잉' ? `<button class="board-follow-btn"><i class="fas fa-check"></i><span>팔로잉</span></button>` : `<button class="board-follow-btn"><i class="fas fa-user-plus"></i><span>팔로우</span></button>`;
+	}
 	let boardItemHtml = `
 				<li class="board-list-item">
 					<div class="board-profile">
@@ -97,13 +148,11 @@ function getBoardItem(boardItem) {
 							<button class="board-heart-btn">
 								<i class="far fa-heart"></i>좋아요
 							</button>
-							<button class="board-follow-btn">
-								<i class="fas fa-check"></i>팔로우
-							</button>
+							${followCheck}						
 						</div>
 					</div>
 					<div class="board-item-img">
-						<img src="/image/${boardItem.file_name}" />
+						${imgHtml}
 					</div> <pre class="board-item-text">${boardItem.board_content}</pre>
 					<div class="board-item-comment">
 						<input type="text" />
@@ -114,40 +163,94 @@ function getBoardItem(boardItem) {
 	return boardItemHtml;
 }
 
-function follow() {
+function initFollow() {
+	boardFollowBtn = document.querySelectorAll('.board-follow-btn');
 
-}
-
-function followCancel() {
-
-}
-
-/*profileEditBtn.onclick = () => {
-	if (profileEditBtn.textContent == "팔로우") {
-		follow();
-	} else {
-		followCancel();
+	for (let i = 0; i < boardFollowBtn.length; i++) {
+		boardFollowBtn[i].onclick = () => {
+			if (boardFollowBtn[i].querySelector('span').textContent == '팔로우') {
+				follow(boardUserId[i]);
+			} else {
+				followCancel(boardUserId[i]);
+			}
+		}
 	}
-}*/
+}
 
-for (let i = 0; i < boardItemImg.length; i++) {
-	boardItemImg[i].onclick = () => {
-		modalContainer2.classList.toggle('show');
+function follow(userId) {
+	$.ajax({
+		type: "POST",
+		url: `/follow/${userId}`,
+		dataType: "text",
+		success: function(data) {
+			if (data == '1') {
+				for(let i = 0; i < boardUserId.length; i++) {
+					if(boardUserId[i] == userId) {
+						boardFollowBtn[i].innerHTML = `<i class="fas fa-check"></i><span>팔로잉</span>`;
+					}
+				}				
+			} else {
+				alert('로그인 후 가능합니다');
+				location.href = '/auth/signin';
+			}
+		},
+		error: function() {
+			alert('로그인 후 가능합니다');
+			location.href = '/auth/signin';
+		}
+	});
+}
 
-		if (modalContainer2.classList.contains('show')) {
-			body.style.overflow = 'hidden';
+function followCancel(userId) {
+	$.ajax({
+		type: "DELETE",
+		url: `/follow/${userId}`,
+		dataType: "text",
+		success: function(data) {
+			if (data == '1') {
+				for(let i = 0; i < boardUserId.length; i++) {
+					if(boardUserId[i] == userId) {
+						boardFollowBtn[i].innerHTML = `<i class="fas fa-user-plus"></i><span>팔로우</span>`;
+					}
+				}		
+			}
+		},
+		error: function() {
+			alert('로그인 후 가능합니다');
+		}
+	});
+}
+
+function initImg() {
+	boardListItem = document.querySelectorAll('.board-list-item');
+	boardImg = document.querySelectorAll('.board-img');
+	boardItemImg = document.querySelectorAll('.board-item-img');
+	prevImg = document.querySelectorAll('.prevImg');
+	nextImg = document.querySelectorAll('.nextImg');
+	moveImg(prevImg, nextImg);
+	modalWindow();
+}
+
+function modalWindow() {
+	for (let i = 0; i < boardImg.length; i++) {
+		boardImg[i].onclick = () => {
+			modalContainer.classList.toggle('show');
+
+			boardModalImgPreview.src = boardImg[i].src;
+			boardModalUsername.textContent = boardListItem[i].querySelector('.board-profile-username').textContent;
+			boardModalProfileImg.src = boardListItem[i].querySelector('.board-profile-img img').src;
+
+			if (modalContainer.classList.contains('show')) {
+				body.style.overflow = 'hidden';
+			}
+		};
+	}
+
+	closeBtn.onclick = () => {
+		modalContainer.classList.toggle('show');
+
+		if (!modalContainer.classList.contains('show')) {
+			body.style.overflow = 'auto';
 		}
 	};
 }
-
-closeBtn.onclick = () => {
-	modalContainer2.classList.toggle('show');
-
-	if (!modalContainer2.classList.contains('show')) {
-		body.style.overflow = 'auto';
-	}
-};
-
-/*for(let categoryItem of subCategoryItem) {
-	categoryItem
-}*/

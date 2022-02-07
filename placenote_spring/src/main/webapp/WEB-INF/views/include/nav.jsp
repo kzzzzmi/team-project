@@ -56,8 +56,7 @@
 						</div>
 						<div class="profile-info-top">
 							<h1 style="cursor: pointer"
-								onclick="location.href = '/my/${principal.getUsername()}'">
-								${principal.getUsername()}</h1>
+								onclick="location.href = '/my/${principal.getUsername()}'">${principal.getUsername()}</h1>
 						</div>
 					</div>
 				</div>

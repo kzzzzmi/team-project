@@ -47,18 +47,15 @@
 			ud.profile_img,
 			um.username AS writer,
 			bm.board_content,
-			GROUP_CONCAT(bf.file_name) AS file_name,
 			bm.update_date
 		FROM
 			board_mst bm
-			LEFT OUTER JOIN board_file bf ON(bf.board_id = bm.board_id)
 			LEFT OUTER JOIN user_mst um ON(um.id = bm.writer)
 			LEFT OUTER JOIN user_dtl ud ON(ud.id = bm.writer)
 		GROUP BY
 			bm.board_id
 		ORDER BY 
-			bm.update_date DESC,
-			bf.file_id ASC;
+			bm.update_date DESC;
 	</select>
 	<select id="getBoard" resultType="com.springboot.placenote.domain.board.IndexBoard" parameterType="String">
 		SELECT
@@ -80,5 +77,14 @@
 		ORDER BY 
 			bm.update_date DESC,
 			bf.file_id ASC;
+	</select>
+	
+	<select id="getFiles" parameterType="Integer" resultType="String">
+		SELECT
+			file_name
+		FROM
+			board_file
+		WHERE
+			board_id = #{board_id};
 	</select>
 </mapper>

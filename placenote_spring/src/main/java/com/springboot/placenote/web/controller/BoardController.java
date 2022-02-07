@@ -21,18 +21,12 @@ public class BoardController {
 
 	@PostMapping("/upload")
 	public boolean insertBoard(BoardReqDto boardReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(boardReqDto.getLocation());
 		return boardService.insertBoard(boardReqDto, principalDetails);
 	}
 
-	@GetMapping("/getBoardAll")
-	public Object getBoardAll(@RequestParam int page) {
-		return boardService.getBoardAll(page).getBoardList();
-	}
-	
 	@GetMapping("/getBoard/{subCategory}")
-	public Object getBoard(@PathVariable String subCategory, @RequestParam int page) {
-		return boardService.getBoardAll(page).getBoardList();
+	public Object getBoard(@PathVariable String subCategory, @RequestParam int page, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		return boardService.getBoard(subCategory, page, principalDetails).getBoardList();
 	}
 
 }

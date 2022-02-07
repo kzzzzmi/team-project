@@ -5,13 +5,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
 import com.springboot.placenote.service.AuthService;
 import com.springboot.placenote.service.ProfileService;
-import com.springboot.placenote.web.dto.auth.ProfileRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +22,7 @@ public class FollowController {
 
 	@PostMapping("/follow/{userId}")
 	public int follow(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable int userId) {
-		if(principalDetails != null) {
+		if(principalDetails != null && (principalDetails.getUser().getId() != userId)) {
 			profileService.follow(principalDetails.getUser().getId(), userId);
 			return 1;
 		}

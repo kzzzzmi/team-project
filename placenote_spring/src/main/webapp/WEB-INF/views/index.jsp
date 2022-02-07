@@ -67,26 +67,23 @@
 					<button class="sub-category-item">카페</button>
 				</div>
 			</div>
-
 			<ul class="board-list"></ul>
-
 		</div>
-		<div class="modal-container2">
+		
+		<div class="modal-container">
 			<i id="close-btn" class="fas fa-times"></i>
 			<div class="board-modal-body">
 				<div class="board-modal-img">
-					<img src="/images/해외_인기_한국_음식_01.png"
+					<img src=""
 						class="board-modal-img-preview" />
 				</div>
 				<div class="board-modal-section">
 					<div class="board-modal-profile">
 						<div class="profile-img-border">
-							<img src="/images/naverfootimg.png" />
+							<img src="/images/naverfootimg.png" class="board-modal-profile-img" />
 						</div>
 						<div class="username-lb">
-							<a href="#">
-								<h1>토리</h1>
-							</a>
+								<h1 class="board-modal-username"></h1>
 						</div>
 					</div>
 					<div class="board-modal-contents">

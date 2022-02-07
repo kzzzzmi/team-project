@@ -3,10 +3,10 @@
  */
 const followBtn = document.querySelectorAll('.follow-btn');
 const profileEditBtn = document.querySelector('.profile-edit-btn');
-const GetUserID = document.querySelector('.getuserid');
+const getUserID = document.querySelector('.getuserid');
 
 function follow() {
-	var userId = GetUserID.value;
+	var userId = getUserID.value;
 	$.ajax({
 		type: 'post',
 		url: `/follow/${userId}`,
@@ -27,7 +27,7 @@ function follow() {
 
 }
 function followCancel() {
-	var userId = GetUserID.value;
+	var userId = getUserID.value;
 	$.ajax({
 		type: 'delete',
 		url: `/follow/${userId}`,

@@ -57,5 +57,5 @@ mybatis:
   - /mappers/*.xml
 
 file:
-  path: C:\fileupload\
+  path: D:\fileupload\
   

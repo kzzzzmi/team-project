@@ -10,4 +10,5 @@ public interface BoardRepository {
 	public int insertBoard(Board board);
 	public List<IndexBoard> getBoardAll();
 	public List<IndexBoard> getBoard(String keyword);
+	public List<String> getFiles(int board_id);
 }

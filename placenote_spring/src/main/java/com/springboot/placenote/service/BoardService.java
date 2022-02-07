@@ -7,6 +7,5 @@ import com.springboot.placenote.web.dto.board.BoardRespDto;
 public interface BoardService {
 
 	public boolean insertBoard(BoardReqDto boardReqDto, PrincipalDetails principalDetails);
-	public BoardRespDto getBoardAll(int page);
-	public BoardRespDto getBoard(String subCategory, int page);
+	public BoardRespDto getBoard(String subCategory, int page, PrincipalDetails principalDetails);
 }

@@ -98,7 +98,6 @@ function follow(userId, i) {
 		},
 		error: function() {
 			alert('로그인 후 가능합니다');
-
 		}
 	});
 

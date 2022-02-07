@@ -13,7 +13,6 @@ iconBoxIcon[1].onclick = () => {
 	new daum.Postcode({
 		oncomplete: function(data) {
 			address.value = data.address;
-			alert(address.value);
 		}
 	}).open({ popupTitle: '주소 검색' });
 }
@@ -45,7 +44,7 @@ iconBoxIcon[0].onclick = () => {
 
 function uploadSubmit() {
 	let formData = new FormData(form);
-
+	
 	$.ajax({
 		type: "POST",
 		url: "/upload",
@@ -54,7 +53,7 @@ function uploadSubmit() {
 		encType: "multipart/form-data",
 		processData: false,
 		contentType: false,
-		success: function(data) {
+		success: function() {
 			alert('추가 성공');
 			location.href = "/index";
 		},
@@ -71,6 +70,8 @@ uploadBtn.onclick = () => {
 		alert('내용을 입력해주세요.');
 	} else if(isEmpty(address.value)) {
 		alert('장소를 선택해주세요.')
+	} else if(isEmpty(file.value)) {
+		alert('파일을 선택해주세요');
 	}
 	else {
 		uploadSubmit();
