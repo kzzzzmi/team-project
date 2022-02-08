@@ -15,6 +15,7 @@ public class BoardFileDto {
 	private String profile_img;
 	private String writer;
 	private String board_content;
+	private String heart;
 	private String follow;
 	private List<String> file_name;
 

@@ -8,4 +8,6 @@ public interface BoardService {
 
 	public boolean insertBoard(BoardReqDto boardReqDto, PrincipalDetails principalDetails);
 	public BoardRespDto getBoard(String subCategory, int page, PrincipalDetails principalDetails);
+	public int heart(int board_id, int user_id);
+	public int heartCancel(int board_id, int user_id);
 }

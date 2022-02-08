@@ -23,16 +23,17 @@ public class FollowController {
 	@PostMapping("/follow/{userId}")
 	public int follow(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable int userId) {
 		if(principalDetails != null && (principalDetails.getUser().getId() != userId)) {
-			profileService.follow(principalDetails.getUser().getId(), userId);
-			return 1;
+			return profileService.follow(principalDetails.getUser().getId(), userId);
 		}
 		return -1;		
 	}
 
 	@DeleteMapping("/follow/{userId}")
 	public int followCancel(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable int userId) {
-		profileService.followCancel(principalDetails.getUser().getId(), userId);
-		return 1;
+		if(principalDetails != null && (principalDetails.getUser().getId() != userId)) {
+			return profileService.followCancel(principalDetails.getUser().getId(), userId);
+		}
+		return -1;
 	}
 
 	@GetMapping("/following/list")

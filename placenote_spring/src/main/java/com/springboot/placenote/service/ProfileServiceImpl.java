@@ -49,15 +49,15 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void follow(int fromUserId, int toUserId) {
+	public int follow(int fromUserId, int toUserId) {
 		Follow followEntity = Follow.builder().from_userid(fromUserId).to_userid(toUserId).build();
-		followRepository.follow(followEntity);
+		return followRepository.follow(followEntity);	
 	}
 
 	@Override
-	public void followCancel(int fromUserId, int toUserId) {
+	public int followCancel(int fromUserId, int toUserId) {
 		Follow followEntity = Follow.builder().from_userid(fromUserId).to_userid(toUserId).build();
-		followRepository.followCancel(followEntity);
+		return followRepository.followCancel(followEntity);
 	}
 
 	@Override

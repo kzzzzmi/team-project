@@ -8,10 +8,12 @@ const boardModalImgPreview = document.querySelector('.board-modal-img-preview');
 const boardModalUsername = document.querySelector('.board-modal-username');
 const boardModalProfileImg = document.querySelector('.board-modal-profile-img');
 var boardListItem = document.querySelectorAll('.board-list-item');
+var boardHeartBtn = document.querySelectorAll('.board-heart-btn');
 var boardFollowBtn = document.querySelectorAll('.board-follow-btn');
 var selectSubCategory = document.querySelector('.select-sub-category');
 var boardImg = document.querySelector('.board-img');
 
+var boardId = [];
 var boardUserId = [];
 
 var boardImages = [];
@@ -22,7 +24,7 @@ var moreBoardNum = [];
 var prevImg = document.querySelectorAll('.prevImg');
 var nextImg = document.querySelectorAll('.nextImg');
 
-const myUsername = document.querySelector('.profile-info-top h1').textContent;
+const myUsername = document.querySelector('.profile-info-top h1') != null ? document.querySelector('.profile-info-top h1').textContent : null;
 var page = 0;
 var boardTotal = 0;
 var boardListItems = ``;
@@ -70,6 +72,7 @@ function boardLoad(subCategory) {
 			boardList.innerHTML = boardListItems;
 			initImg();
 			initFollow();
+			initHeart();
 		},
 		error: function() {
 			alert("비동기 처리 오류");
@@ -109,6 +112,7 @@ function getBoardItem(boardItem) {
 	boardImagesStartIndex.push(imagesIndex);
 	currentBoardNum.push(imagesIndex);
 	boardUserId.push(boardItem.user_id);
+	boardId.push(boardItem.board_id);
 
 	let imgHtml = ``;
 
@@ -132,6 +136,9 @@ function getBoardItem(boardItem) {
 	if (boardItem.writer != myUsername) {
 		followCheck = boardItem.follow == '팔로잉' ? `<button class="board-follow-btn"><i class="fas fa-check"></i><span>팔로잉</span></button>` : `<button class="board-follow-btn"><i class="fas fa-user-plus"></i><span>팔로우</span></button>`;
 	}
+
+	let heartCheck = boardItem.heart == '좋아요' ? `<i class="far fa-heart"></i><span>좋아요</span>` : `<i class="fas fa-heart"></i><span>취소</span>`;
+
 	let boardItemHtml = `
 				<li class="board-list-item">
 					<div class="board-profile">
@@ -146,7 +153,7 @@ function getBoardItem(boardItem) {
 						</button>
 						<div class="board-heart-follow-btn">
 							<button class="board-heart-btn">
-								<i class="far fa-heart"></i>좋아요
+								${heartCheck}
 							</button>
 							${followCheck}						
 						</div>
@@ -161,6 +168,59 @@ function getBoardItem(boardItem) {
 				</li>
 				`;
 	return boardItemHtml;
+}
+
+function initHeart() {
+	boardHeartBtn = document.querySelectorAll('.board-heart-btn');
+	
+	for(let i = 0; i < boardHeartBtn.length; i++) {
+		boardHeartBtn[i].onclick = () => {
+			if(boardHeartBtn[i].querySelector('span').textContent == '좋아요') {
+				heart(boardId[i], i);
+			} else {
+				heartCancel(boardId[i], i);
+			}
+		}
+	}
+}
+
+function heart(boardId, i) {
+	$.ajax({
+		type: "POST",
+		url: `/heart/${boardId}`,
+		dataType: "text",
+		success: function(data) {
+			if(data == '1') {
+				boardHeartBtn[i].innerHTML = `<i class="fas fa-heart"></i><span>취소</span>`;
+			} else {
+				alert('로그인 후 가능합니다.');
+				location.href = '/auth/signin';
+			}
+		},
+		error: function() {
+			alert('비동기 처리 오류');
+			location.href = '/auth/signin';
+		}
+	})
+}
+
+function heartCancel(boardId, i) {
+	$.ajax({
+		type: "DELETE",
+		url: `/heart/${boardId}`,
+		dataType: "text",
+		success: function(data) {
+			if(data == '1') {
+				boardHeartBtn[i].innerHTML = `<i class="far fa-heart"></i><span>좋아요</span>`;
+			} else {
+				alert('로그인 후 가능합니다.');
+				location.href = '/auth/signin';
+			}
+		},
+		error: function() {
+			alert('비동기 처리 오류');
+		}
+	})
 }
 
 function initFollow() {

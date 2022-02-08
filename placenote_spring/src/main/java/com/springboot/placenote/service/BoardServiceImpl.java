@@ -20,6 +20,8 @@ import com.springboot.placenote.domain.board.BoardRepository;
 import com.springboot.placenote.domain.board.IndexBoard;
 import com.springboot.placenote.domain.follow.Follow;
 import com.springboot.placenote.domain.follow.FollowRepository;
+import com.springboot.placenote.domain.heart.Heart;
+import com.springboot.placenote.domain.heart.HeartRepository;
 import com.springboot.placenote.domain.user.UserRepository;
 import com.springboot.placenote.web.dto.board.BoardFileDto;
 import com.springboot.placenote.web.dto.board.BoardReqDto;
@@ -34,6 +36,7 @@ public class BoardServiceImpl implements BoardService {
 	private final UserRepository userRepository;
 	private final BoardRepository boardRepository;
 	private final FollowRepository followRepository;
+	private final HeartRepository heartRepository;
 
 	@Value("${file.path}")
 	private String filePath;
@@ -92,8 +95,10 @@ public class BoardServiceImpl implements BoardService {
 				int userid = userRepository.getUserByUsername(indexBoard.getWriter()).getId();
 				Follow follow = Follow.builder().from_userid(principalDetails.getUser().getId())
 						.to_userid(userid).build();
+				Heart heart = Heart.builder().board_id(indexBoard.getBoard_id()).user_id(principalDetails.getUser().getId()).build();
 				
 				boardFileDto.setUser_id(userid);
+				boardFileDto.setHeart(heartRepository.isHearted(heart) == 1 ? "취소" : "좋아요");
 				boardFileDto.setFollow(followRepository.isFollowed(follow) == 1 ? "팔로잉" : "팔로우");
 				boardFileDto.setFile_name(boardRepository.getFiles(indexBoard.getBoard_id()));
 				String formatDate = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(boardFileDto.getUpdate_date());
@@ -106,6 +111,7 @@ public class BoardServiceImpl implements BoardService {
 				IndexBoard indexBoard = boardListAll.get(start);
 				BoardFileDto boardFileDto = indexBoard.toBoardFileDto();
 
+				boardFileDto.setHeart("좋아요");
 				boardFileDto.setFollow("팔로우");
 				boardFileDto.setFile_name(boardRepository.getFiles(indexBoard.getBoard_id()));
 				String formatDate = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(boardFileDto.getUpdate_date());
@@ -117,5 +123,17 @@ public class BoardServiceImpl implements BoardService {
 
 		boardRespDto.setBoardList(boardList);
 		return boardRespDto;
+	}
+
+	@Override
+	public int heart(int board_id, int user_id) {
+		Heart heart = Heart.builder().board_id(board_id).user_id(user_id).build();
+		return heartRepository.heart(heart);
+	}
+
+	@Override
+	public int heartCancel(int board_id, int user_id) {
+		Heart heart = Heart.builder().board_id(board_id).user_id(user_id).build();
+		return heartRepository.heartCancel(heart);
 	}
 }
