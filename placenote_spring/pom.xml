@@ -12,6 +12,7 @@
 	<groupId>com.springboot</groupId>
 	<artifactId>placenote</artifactId>
 	<version>1</version>
+	<packaging>war</packaging>
 	<name>placenote</name>
 	<description>placenote project for Spring Boot</description>
 	<properties>
@@ -88,11 +89,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
-	
+		<!-- spring-boot-starter-tomcat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.nurigo/javaSDK -->
+		<dependency>
+			<groupId>net.nurigo</groupId>
+			<artifactId>javaSDK</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 	</dependencies>
 
 	<build>
+		<finalName>${artifactId}</finalName> <!-- build 하고 나면 version이 같이 오는데 빼고 가져오게 해줌 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
