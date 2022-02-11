@@ -16,6 +16,5 @@ public interface FollowRepository {
 	public List<Follow> getFollowing(int userid);
 	public int isFollowed(Follow follow);
 	public int isFollowered(Follow follow);
-	public int followTotalCount(String username);
 	
 }

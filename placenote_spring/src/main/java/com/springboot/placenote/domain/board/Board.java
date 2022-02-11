@@ -11,7 +11,7 @@ import lombok.Data;
 public class Board {
 	private int board_id;
 	private int file_id;
-	
+
 	private int writer;
 	private String keyword;
 	private String place_name;

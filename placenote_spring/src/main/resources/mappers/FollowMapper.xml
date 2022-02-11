@@ -54,7 +54,7 @@
 			follow_mst
 		where
 			from_userid = #{from_userid}
-		and to_userid = #{to_userid};
+		and to_userid = #{to_userid};	
 	</delete>
 	<select id="getFollowing" parameterType="Integer" resultType="com.springboot.placenote.domain.follow.Follow">
 		SELECT
@@ -83,8 +83,5 @@
    		where
    			fm.to_userid = #{to_userid};
 	</select>
-	<select id="followTotalCount" parameterType="" resultType="">
-	
-	</select>
-	
+
 </mapper>

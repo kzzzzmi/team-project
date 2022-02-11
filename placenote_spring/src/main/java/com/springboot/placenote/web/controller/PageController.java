@@ -4,10 +4,17 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.placenote.config.auth.PrincipalDetails;
+import com.springboot.placenote.domain.follow.FollowRepository;
+import com.springboot.placenote.service.AuthService;
 import com.springboot.placenote.service.ProfileService;
+import com.springboot.placenote.web.dto.auth.MyInfoReqDto;
+import com.springboot.placenote.web.dto.auth.PasswordReqDto;
 import com.springboot.placenote.web.dto.auth.ProfileRespDto;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +25,7 @@ public class PageController {
 
 	private final ProfileService profileService;
 
+	
 	@GetMapping("/index")
 	public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		return "index";
@@ -70,4 +78,10 @@ public class PageController {
 	public String update() {
 		return "/upload/upload";
 	}
+	@GetMapping("/myInfo")
+	public Object insertUserFrom(@AuthenticationPrincipal PrincipalDetails principalDetails , ProfileRespDto profileRespDto) {
+	    return "/myInfo/myInfo";
+	}
+	
+	
 }

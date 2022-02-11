@@ -1,19 +1,24 @@
 const body = document.querySelector('body');
-const modalContainer = document.querySelector('.modal-container');
-const modalContainer2 = document.querySelector('.modal-container2');
 const settingBtn = document.querySelector('#setting-btn');
 const boardItemImg = document.querySelectorAll('.board-item-img');
-const closeBtn = document.querySelector('#close-btn');
 const boardList = document.querySelector('.board-list');
+
+const modalContainer2 = document.querySelector('.modal-container2');
+const boardItemComment = document.querySelectorAll('.board-item-comment');
+const boardItemCommentBtn = document.querySelectorAll('.board-item-comment-btn');
+const closeBtn = document.querySelector('#close-btn');
 
 var page = 0;
 var boardTotal = 0;
 var boardListItems = ``;
 
+modalContainer2.style.display = "none";
+
+
 window.onscroll = () => {
 	let checkNum = $(document).height() - $(window).height() - $(window).scrollTop();
-	
-	if(checkNum < 1 && checkNum > -1 && boardTotal >= (page + 1) * 5) {
+
+	if (checkNum < 1 && checkNum > -1 && boardTotal >= (page + 1) * 5) {
 		page++;
 		boardLoad();
 	}
@@ -41,9 +46,11 @@ function boardLoad() {
 function getBoardListItems(boardItems) {
 	let boardItemsHtml = ``;
 
+
 	for (let boardItem of boardItems) {
 		boardItemsHtml += getBoardItem(boardItem);
 	}
+
 	return boardItemsHtml;
 }
 
@@ -53,7 +60,7 @@ function getBoardItem(boardItem) {
 					<div class="board-profile">
 						<button class="board-profile-btn">
 							<div class="board-profile-img">
-								<img src="/image/${boardItem.profile_img}" />
+								<img src="/image/${boardItem.profile_img}"/>
 							</div>
 							<div>
 								<div class="board-profile-username">${boardItem.writer}</div>
@@ -73,28 +80,27 @@ function getBoardItem(boardItem) {
 						<img src="/image/${boardItem.file_name}" />
 					</div> <pre class="board-item-text">${boardItem.board_content}</pre>
 					<div class="board-item-comment">
-						<input type="text" />
-						<button>등록</button>
+						<button type="button" class="board-item-comment-btn">댓글쓰기</button>
 					</div>
 				</li>
 				`;
 	return boardItemHtml;
 }
+function getComment(){
+	boardItemCommentBtn[i].onclick = () => {
+		modalContainer2.style.display = "flex";
 
-for (let i = 0; i < boardItemImg.length; i++) {
-	boardItemImg[i].onclick = () => {
-		modalContainer2.classList.toggle('show');
-
-		if (modalContainer2.classList.contains('show')) {
-			body.style.overflow = 'hidden';
-		}
 	};
 }
 
-closeBtn.onclick = () => {
-	modalContainer2.classList.toggle('show');
 
-	if (!modalContainer2.classList.contains('show')) {
-		body.style.overflow = 'auto';
-	}
-};
+
+//var btns = document.getElementsByClassName('board-item-comment-btn').innerHTML;
+
+/*for (let i = 0; i < boardItemComment.length; i++) {
+	
+	boardItemCommentBtn[i].onclick = () => {
+		modalContainer2.style.display = "flex";
+	};
+}
+*/

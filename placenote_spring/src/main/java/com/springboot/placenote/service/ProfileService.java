@@ -12,7 +12,8 @@ public interface ProfileService {
     public void follow(int fromUserId, int toUserId);
     public void followCancel(int fromUserId, int toUserId);
     
-    public FollowRespDto getFollower( PrincipalDetails principalDetails , int userId);
+    public FollowRespDto getFollower(PrincipalDetails principalDetails , int userId);
     public FollowRespDto getFollowing(PrincipalDetails principalDetailsint, int userId);
+   
    
 }

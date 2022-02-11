@@ -27,5 +27,5 @@ public class BoardController {
 	public Object getBoardAll(@RequestParam int page) {
 		return boardService.getBoardAll(page).getBoardList();
 	}
-	
+
 }

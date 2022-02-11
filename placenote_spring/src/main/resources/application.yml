@@ -48,14 +48,14 @@ spring:
              
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://121.175.150.249:3306/project_20220113_02?useUnicode=true&allowMultiQueries=true
-    username: tp220113_02
-    password: 1685
+    url: jdbc:mariadb://database-study.ccdctu9ielxv.us-east-1.rds.amazonaws.com:3306/project_20220113_02?useUnicode=true&allowMultiQueries=true
+    username: yydg
+    password: ehdrms96!!
     
 mybatis:
   mapper-locations:
   - /mappers/*.xml
 
 file:
-  path: C:\fileupload\
-  
+ # path: C:\김준일강사\spring\workspace\placenote\image\
+  path : /home/ubuntu/image/

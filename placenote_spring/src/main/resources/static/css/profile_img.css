@@ -136,8 +136,13 @@ section{
 }
 
 .profile-username {
+    display: flex;
+    justify-content: center;
+    width: 180px;
     font-size: 1.5em;
     font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .profile-edit-btn {
@@ -281,13 +286,12 @@ section{
 
 
 .sub-category {
-    display: flex;
+display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0 2px;
     background-color: white;
     align-content: center;
-    max-width: 720px;
 
 }
 

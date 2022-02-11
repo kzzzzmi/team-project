@@ -55,5 +55,39 @@
 			NOW()
 		);
 	</insert>
+	<update id="updateUserById" parameterType="com.springboot.placenote.domain.user.User">
+		UPDATE
+			user_mst
+		SET
+			username = #{username},
+			password = #{password},
+			phone = #{phone},
+			email = #{email},
+			
+			
+			update_date = now()
+		WHERE
+			id = #{id};
+	</update>
+	<update id="updateUserDtlById" parameterType="com.springboot.placenote.domain.user.UserDtl">
+		UPDATE
+			user_dtl
+		SET
+			profile_img = #{profile_img},
+			
+			update_date = now()
+		WHERE
+			id = #{id};
+	</update>
+	<update id="updatePasswordById" parameterType="com.springboot.placenote.domain.user.User">
+		UPDATE
+			user_mst
+		SET 
+			password = #{password},
+			
+			update_date = now()
+		WHERE
+			id = #{id};
+	</update>
 	
 </mapper>

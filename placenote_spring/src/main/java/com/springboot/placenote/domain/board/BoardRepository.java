@@ -9,4 +9,5 @@ public interface BoardRepository {
 
 	public int insertBoard(Board board);
 	public List<IndexBoard> getBoardAll();
+	public List<IndexBoard>getBoardListByUsername(String username);
 }

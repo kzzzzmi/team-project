@@ -6,14 +6,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.placenote.config.auth.PrincipalDetails;
+import com.springboot.placenote.domain.user.UserRepository;
 import com.springboot.placenote.service.AuthService;
 import com.springboot.placenote.service.CertifiedService;
+import com.springboot.placenote.service.ProfileService;
+import com.springboot.placenote.web.dto.auth.ProfileRespDto;
 import com.springboot.placenote.web.dto.auth.SignupReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +30,11 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
  
 	private final AuthService authService;
+	
 	private final CertifiedService certifiedService;
+	
+	
+	
 	
 	@GetMapping("/auth/username-check")
 	public boolean usernameCheck(@RequestParam String username) {
@@ -47,5 +58,7 @@ public class AuthController {
 		certifiedService.certifiedPhoneNumber(phoneNumber, numStr);
 		return numStr;
 	}
+	
+	
 	
 }

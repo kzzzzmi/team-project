@@ -66,55 +66,13 @@
 			</div>
 
 			<ul class="board-list">
-				
+
 			</ul>
 		</div>
-		<div class="modal-container2">
-			<i id="close-btn" class="fas fa-times"></i>
-			<div class="board-modal-body">
-				<div class="board-modal-img">
-					<img src="/images/해외_인기_한국_음식_01.png"
-						class="board-modal-img-preview" />
-				</div>
-				<div class="board-modal-section">
-					<div class="board-modal-profile">
-						<div class="profile-img-border">
-							<img src="/images/naverfootimg.png" />
-						</div>
-						<div class="username-lb">
-							<a href="#">
-								<h1>토리</h1>
-							</a>
-						</div>
-					</div>
-					<div class="board-modal-contents">
-						<div class="board-modal-content">
-							<div class="profile-img-border">
-								<img src="/images/naverfooter_logo.png" />
-							</div>
-							<pre>
-								<div class="username-lb">
-									<a href="#"><h1>뽀미</h1></a>
-								</div>
-							</pre>
-						</div>
-						<div class="board-modal-comment"></div>
-					</div>
-					<div class="board-modal-items">
-						<i class="far fa-heart"></i> <i class="far fa-comment"></i> <i
-							class="far fa-paper-plane"></i>
-					</div>
-					<div class="board-modal-like-info">
-						<span>aaaa님 외 55명이 좋아합니다.</span>
-					</div>
-					<div class="board-modal-comment-input">
-						<input type="text" />
-						<button type="button">게시</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
+	
+	<jsp:include page="include/comment_modal.jsp"></jsp:include>
+	
 	<script src="/js/index.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@
 								<div class="profile-info-top">
 									<input type="hidden" id="userid" value="${principal.username}">
 									<h1 class="profile-username">${principal.username}</h1>
-									<input type="button" class="profile-edit-btn" value="프로필편집"></input>
+									<input type="button" class="profile-edit-btn" value="프로필편집" onclick= "location.href = '/myInfo'"></input>
 								</div>
 								<div class="profile-info-middle">
 									<div class="profile-info-middle-item">
@@ -269,7 +269,7 @@
 				</section>
 				<footer>
 					<div class="footer-logo">
-						<a href="#"> <img src="/images/naverfooter_logo.png" alt="">
+						<a href="/index"> <img src="/images/naverfooter_logo.png" alt="">
 						</a> <a href="#"> <span>회원정보 고객센터</span>
 						</a> <a href=""> <span>공지사항</span>
 						</a>
